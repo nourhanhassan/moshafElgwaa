@@ -1,0 +1,183 @@
+﻿<ion-view view-title="{{title}}" ng-controller="alarmController">
+    <ion-content class="memorize-form  ">
+        <form name="alarmForm">
+            <div class="list card animated slideInUp">
+                <!--<div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">
+                                تاريخ التنبيه
+                                <span style="color:red" ng-show="alarmForm.title.$error.required"> * </span>
+                            </span>
+
+                        </label>
+                        <calender-hejri ng-model="hejriDate"></calender-hejri>
+                        <ion-item>
+                            <ion-label position="floating">MM/DD/YYYY</ion-label>
+                            <ion-datetime display-format="MM/DD/YYYY" ng-model="gregDate"></ion-datetime>
+                        </ion-item>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> تفعيل التنبيه </span>
+                            <!--<input type="time" placeholder="اختر وقت التنبيهات">-->
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetAlarm.notificationModeSelection" ng-change="toggleNotification(targetAlarm)">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </label>
+
+                        <div>
+                            <label class="item item-input">
+                                <span class="input-label" aria-label="وقت التنبيه " id="Span1">وقت التنبيه </span>
+                                <strong class="ng-binding" style="width:100px;">{{getHour()}}:{{notificationTime.minute}} {{getAmPm()}}</strong>
+                            </label>
+                            <div class="text-center"> <a ng-click="setTime()" class="button  button-positive icon ion-android-alarm-clock icon-right button-block">ضبط التنبيه</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">
+                                عنوان التنبيه
+                                <span style="color:red" ng-show="alarmForm.title.$error.required"> * </span>
+                            </span>
+                            <input type="text" placeholder="ادخل عنوانا للتنبيه" name="title" ng-model="targetAlarm.title" required>
+                            <span style="color:red" ng-show="alarmForm.$submitted || alarmForm.title.$touched">
+                                <span ng-show="alarmForm.title.$error.required">من فضلك قم بادخال عنوان للتنبيه</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> الاهتزاز </span>
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetAlarm.vibrate">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> الغفوة </span>
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetAlarm.hasSnooze">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </label>
+                    </div>
+                </div>
+                <div class="row " ng-show="targetAlarm.hasSnooze">
+                    <div class="col">
+                        <div class="item item-input item-stacked-label">
+                            <span class="input-label"> الوقت </span>
+                            <div class="number-input">
+                                <button ng-click="decreaseSnoozeCount()"></button>
+                                <input type="number" name="snoozeCount" ng-model="targetAlarm.snoozeCount" min="1" max="30" placeholder="الغفوة" disabled>
+                                <button class="plus" ng-click="increaseSnoozeCount()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> تشغيل المنبه في الوضع الصامت  </span>
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetAlarm.onSilent">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </label>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> تكرار التنبيه </span>
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetAlarm.repeat">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                            <p ng-show="targetAlarm.repeat"><small>{{targetAlarm.repeatDaysText}}</small></p>
+                            <p ng-show="targetAlarm.repeat && noRepeat"><small>{{targetAlarm.mustHaveRepeatDays}}</small></p>
+                    </div>
+                    </label>
+
+                </div>
+                <div class="row" ng-show="targetAlarm.repeat">
+                    <div class="col">
+                        <button type="button" class="button button-positive" ng-click="toggleRepeatDays()">إختيار أيام التنبيه</button>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center">
+                            <button type="button" class="button button-positive" ng-click="openAddAlarmRingtone('add')">إختيار نغمة التنبيه</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--<div class="row" ng-show="targetAlarm.repeat">
+                <div class="col">
+                    <div week-days-list week-days="weekDays">
+                    </div>
+                </div>
+            </div>-->
+            <!--<div class="row" ng-show="targetAlarm.repeat">
+                <div class="col">
+                    <div class="list">
+                        <div class="item item-input item-select">
+                            <div class="input-label">
+                                اختر اليوم
+                            </div>
+                            <select ng-model="notificationTime.dayofWeek" ng-options="day.index as day.name for day in enums.weekDays" ng-change="setTargetNotificationTime()"></select>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>-->
+            <!--</div>-->
+            <div class="bar text-left animated slideInRight">
+                <button type="submit" class="button button-positive" ng-disabled="(targetAlarm.repeat && targetAlarm.repeatDaysText =='') || targetAlarm.title == ''" ng-click="saveAlarm(targetAlarm)">حفظ</button>
+            </div>
+        </form>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ui-sref="alarm-list">
+            <i class=" ion-arrow-left-c">
+            </i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>
+
+<!--<ion-item>
+    <ion-label floating>Date</ion-label>
+    <ion-datetime displayformat="DD/MM/YY" pickerformat="D MMMM YYYY" [(ngmodel)]="data.date" name="date"></ion-datetime>
+</ion-item>-->

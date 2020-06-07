@@ -1,0 +1,42 @@
+﻿<ion-modal-view id="add-bookmark-type">
+
+
+  <ion-content class="padding">
+  
+          <div class="popup-head">
+              <h3 class="popup-title">علامة مرجعية جديدة </h3><h5 class="popup-sub-title">
+
+                  أضف علامة مرجعية جديدة للقائمة
+              </h5>
+          </div>
+
+      <form name="addBookMarkTypeForm" ng-submit="saveNewBookMarkType()">
+          <div class="list list-inset" ng-class="{'un-valid':addBookMarkTypeForm.title.$error.pattern}">
+              <label class="item item-input">
+                  <input name="title" type="text" placeholder="اكتب علامتك هنا" ng-pattern="enums.validations.stringMixed50.pattern" required ng-model="newBookMarkTypeModel.title" />
+              </label>
+
+          </div>
+          <div ng-if="addBookMarkTypeForm.title.$invalid && !addBookMarkTypeForm.title.$pristine" class="validation-text">
+              <span ng-show="addBookMarkTypeForm.title.$error.required"> هذه البيانات مطلوبة!</span>
+          </div>
+          <div class="color-set">
+              <div ng-repeat="color in colors" class="color-{{color.name}} color-icon" ng-class="{ 'active' : activeColor == color.name }" ng-click="setBookMarkColor(color.name)">
+              </div>
+          
+          </div>
+          <input name="color" type="text" required hidden ng-model="newBookMarkTypeModel.color" style="display:none;" />
+          <div ng-if="addBookMarkTypeForm.color.$invalid && !addBookMarkTypeForm.color.$pristine" class="validation-text">
+              <span ng-show="addBookMarkTypeForm.color.$error.required"> هذه البيانات مطلوبة!</span>
+          </div>
+          <div class="validation-text">
+              <span ng-hide="newBookMarkTypeModel.color">*يجب أختيار لون </span>
+          </div>
+          <a class="button-bar">
+              <button class="button button-positive" type="submit" ng-disabled="addBookMarkTypeForm.color.$invalid || addBookMarkTypeForm.title.$invalid" ng-click="saveNewBookMarkType()">حفظ</button>
+              <button class="button button-positive button-outline" ng-click="closeAddBookMarkTypeModal()">إلغاء</button>
+          </a>
+      </form>
+  </ion-content>
+
+            </ion-modal-view>

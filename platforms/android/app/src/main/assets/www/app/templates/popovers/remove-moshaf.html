@@ -1,0 +1,27 @@
+﻿<ion-modal-view>
+
+    <div class="popup-head">
+        <h3 class="popup-title">قائمة الروايات المتاحة</h3><h5 class="popup-sub-title"> حدد الرواية التي ترغب في حذفها</h5>
+    </div>
+
+    <ion-content class="padding-horizontal has-footer has-expanded-header">
+
+        <ion-list>
+            <ion-item ng-repeat="rowaya in rowayat>
+                <ion-label>{{rowaya.val}}</ion-label>
+                <ion-checkbox slot="end" ng-model="rowaya.isChecked"></ion-checkbox>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="saveDelete()">تأكيد الحذف</button>
+            <button class="button button-positive button-outline" ng-click="closePopup()">إلغاء</button>
+        </a>
+    </div>
+
+
+
+
+</ion-modal-view>

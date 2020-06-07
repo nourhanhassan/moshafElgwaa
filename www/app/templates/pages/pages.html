@@ -1,0 +1,37 @@
+<ion-view  view-title="الانتقالات" animation="no-animation" ng-controller="pagesController">
+    <ion-content class="padding-vertical">
+        <form name="goto" ng-submit="goto.$valid && submit()" id="pageForm">
+            <div class="list list-default">
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper number-no">
+                        <input type="number" pattern="[0-9]*" mode="numeric" placeholder="رقم الصفحة" ng-model="model.pageNumber" required name="pageNumber" min="1" ng-max="pages" id="num" ng-change="changeText()">
+                    </label>
+                    <span style="color: #c18e1a;" ng-show="goto.pageNumber.$error.required">*</span>
+                </div>
+            </div>
+            <span style="color: #c18e1a; vertical-align: super;" ng-show="(goto.pageNumber.$error.required) || (goto.pageNumber.$error.min || goto.pageNumber.$error.max) || goto.pageNumber.$error.pattern">
+                <span ng-show="goto.pageNumber.$error.pattern">رقم غير صحيح </span>
+                <span ng-show="goto.pageNumber.$error.min || goto.pageNumber.$error.max ">يجب إدخال ارقام  من 1 ل {{pages}}  .</span>
+            </span>
+            <div class="bg-dark">
+                <div class="padding">
+                    <div class="button-bar bar-energized-900">
+                        <a class="button" ng-click="addValue(100)" ng-disabled="model.pageNumber>=505 || goto.pageNumber.$error.pattern">+100</a>
+                        <a class="button" ng-click="subtractValue(100)" ng-disabled="model.pageNumber<=100 || goto.pageNumber.$error.pattern">-100</a>
+                    </div>
+                    <div class="button-bar bar-energized pages">
+                        <a class="button" ng-click="addValue(10)" ng-disabled="model.pageNumber>=595 || goto.pageNumber.$error.pattern">+10</a>
+                        <a class="button" ng-click="subtractValue(10)" ng-disabled="model.pageNumber<=10 || goto.pageNumber.$error.pattern">-10</a>
+                    </div>
+                    <div class="button-bar bar-energized-100 pages">
+                        <a class="button" ng-click="addValue(1)" ng-disabled="model.pageNumber>=pages || goto.pageNumber.$error.pattern">+1</a>
+                        <a class="button" ng-click="subtractValue(1)" ng-disabled="model.pageNumber<=1 || goto.pageNumber.$error.pattern">-1</a>
+                    </div>
+                </div>
+                <div class="padding">
+                    <button class="button button-flat button-block button-positive" ng-disabled="goto.$invalid" type="submit">انتقل</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

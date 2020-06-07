@@ -1,0 +1,45 @@
+﻿<!--<ion-view title="الرئيسية" ng-controller="homeController">
+    <ion-content id="home" has-header="true" class="bg">
+
+
+  <div class="logo">
+   <img class="full-image" src="img/logo.png">
+  </div>
+        <div class="btn-main">
+
+            <div class="text-center">
+                <a  menu-close-qv class="button button-outline button-calm" ui-sref="app.set-target-details({mode: enums.memorizeMode.individual })"><i class="icon ion-information"></i>حفظ فردي</a>
+            </div>
+
+            <div class="text-center">
+                <a menu-close-qv class="button button-outline button-calm" ui-sref="app.register"><i class="icon ion-iphone"></i>حفظ في مجموعة </a>
+            </div>
+            <
+             
+          
+        </div>
+
+</ion-content>
+</ion-view>-->
+
+<ion-view view-title="الرئيسية" class="main-bg"  hide-nav-bar="true" ng-controller="homeController">
+  <ion-content scroll="false">
+  <!-- <div class="main-logo">
+        <img src="img/logo.png"/> </div>-->
+  
+    <div class="main-btns">
+                                    <a class="button button-block button-positive"  ui-sref="app.marks">المرجعيات <i class="icon ion-person-stalker"></i></a>
+
+                            <a class="button button-block button-positive"  ui-sref="app.surahs">السور <i class="icon ion-person-stalker"></i></a>
+                                    <a class="button button-block button-positive"  ui-sref="app.pages">الانتقالات <i class="icon ion-person-stalker"></i></a>
+
+        <a class="button button-block button-positive" ng-click="redirect()">  حفظ فردي <i class="icon ion-person"></i></a>
+        <!--<a class="button button-block button-positive" ng-click="redirectGroup()">حفظ في مجموعة <i class="icon ion-person-stalker"></i></a>-->
+        <a class="button button-block button-positive" ui-sref="app.search">بحث <i class="icon ion-person-stalker"></i></a>
+                    <a class="button button-block button-positive"  ui-sref="app.parts">الأجزاء <i class="icon ion-person-stalker"></i></a>
+
+    
+    
+    </div>
+  </ion-content><a class="button button-light button-small" ng-click="share()">مشاركة التطبيق <i class="icon ion-share"></i></a>
+</ion-view>

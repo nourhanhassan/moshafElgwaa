@@ -1,0 +1,49 @@
+﻿<ion-modal-view id="interpretation">
+
+
+    <div class="popup-head">
+        <h3 class="popup-title">التفسير الميسر</h3>
+        <h5 class="popup-sub-title">
+
+            سورة {{TafseerAyaModel.surahName}} - آية  {{getArabicNumber(TafseerAyaModel.ayahNumber) }}
+
+        </h5>
+
+    </div>
+    <div class="popup-nav">
+
+        <div class="row">
+            <div class="col">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+
+                    </div>
+                    <select ng-model="TafseerAyaModel.surahId" ng-options="sura.Id as sura.Name for sura in allSurahs" ng-change="getSurahAyat(TafseerAyaModel.surahId)"></select>
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+
+                    </div>
+                    <select ng-model="TafseerAyaModel.id" ng-options="aya.id as aya.ayahNum for aya in surahAyat" ng-change="showTafseerModal(TafseerAyaModel.id)"></select>
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <ion-content class="padding interpretation-main">
+        <div class="popup-main">
+
+            <p class="aya">   {{TafseerAyaModel.ayaText}} <span class="badge badge-stable aya-num-decoration">{{getArabicNumber(TafseerAyaModel.ayahNumber) }}</span></p>
+            <p class="aya-inter">
+                {{TafseerAyaModel.tafseer}}
+            </p>
+        </div>
+    </ion-content>
+    <div class="popup-arrows">
+        <a href="" ng-click="showTafseerModal(TafseerAyaModel.id+1)"  class="button button-positive button-next button-small"><i class="icon ion-chevron-left"></i></a>
+        <a href="" ng-click="showTafseerModal(TafseerAyaModel.id-1)" class="button button-positive button-prev button-small"><i class="icon ion-chevron-right"></i></a>
+    </div>
+    <button class="button button-clear button-close-modal" ng-click="closeTafseerModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

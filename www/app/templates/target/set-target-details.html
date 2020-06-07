@@ -1,0 +1,143 @@
+﻿
+
+<ion-view view-title="تعيين ورد حفظ" class="main-bg" ng-controller="setTargetDetailsController">
+
+    <ion-content class="memorize-form has-progress">
+
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <ion-list class="radio-buttons list">
+                        <ion-radio name="targetType" ng-model="targetData.targetType" value="{{enums.targetType.sura}}" ng-change="validateTarget()">
+                            سورة
+
+                        </ion-radio>
+                        <ion-radio name="targetType" ng-model="targetData.targetType" value="{{enums.targetType.juz}}" ng-change="validateTarget()">
+                            جزء
+
+                        </ion-radio>
+                        <ion-radio name="targetType" ng-model="targetData.targetType" value="{{enums.targetType.page}}" ng-change="validateTarget()">
+                            صفحة
+
+                        </ion-radio>
+                        <ion-radio name="targetType" ng-model="targetData.targetType" value="{{enums.targetType.aya}}" ng-change="validateTarget()">
+                            آية
+
+                        </ion-radio>
+                    </ion-list>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="list">
+
+                        <label class="item item-input item-select" ng-show="targetData.targetType==enums.targetType.sura">
+                            <div class="input-label">
+                                اسم السورة
+                            </div>
+
+                            <select ng-model="targetData.surahId" ng-show="targetData.targetType==enums.targetType.sura" ng-options="sura.Id as sura.Name for sura in surahs" ng-change="validateTarget()"></select>
+                        </label>
+                      
+                            <ul class="list card" ng-show="targetData.targetType==enums.targetType.aya">
+                                <label class="item item-input item-select">
+                                    <div class="input-label">
+                                        <i class="icon ion-person-stalker"></i>
+                                        من سورة
+                                    </div>
+                                    <select  ng-options="sura.Id as sura.Name for sura in surahs"
+                                            ng-model="targetData.selectedSurahStart" ng-change="changeToSurahStart()"
+                                            ng-selected="targetData.selectedSurahStart.Id==surah.Id" required></select>
+                                    <span ng-show="targetData.selectedSurahStart.$error.required">برجاء تحديد سورة البداية</span>
+                                </label>
+
+                                <label class="item item-input item-select">
+                                    <div class="input-label">
+                                        <i class="icon ion-person-stalker"></i>
+                                        من اّية
+                                    </div>
+                                    <select ng-required="model.formRepeatFlag" ng-options="ayah as ayah.ayahNum for ayah in surahAyatStart track by ayah.id"
+                                            ng-model="targetData.selectedAyahStart" ng-change="changeToAyahStart()" ng-selected="targetData.selectedAyahStart.id==ayah.id"></select>
+                                    <span class="error" ng-show="targetData.selectedAyahStart == undefined">برجاء تحديد بداية المقطع</span>
+
+                                </label>
+
+                                </li>
+                                <li>
+
+                                    <label class="item item-input item-select">
+                                        <div class="input-label">
+                                            <i class="icon ion-person-stalker"></i>
+                                            الى سورة
+                                        </div>
+                                        <select ng-required="model.formRepeatFlag" ng-options="sura.Id as sura.Name for sura in surahs"
+                                                ng-model="targetData.selectedSurahEnd" ng-change="changeToSurahEnd()"></select>
+
+                                    </label>
+                                    <label class="item item-input item-select">
+                                        <div class="input-label">
+                                            <i class="icon ion-person-stalker"></i>
+                                            الى اّية
+                                        </div>
+                                        <select ng-required="model.formRepeatFlag" ng-options="ayah as ayah.ayahNum for ayah in surahAyatEnd track by ayah.id"
+                                                ng-model="targetData.selectedAyahEnd" ng-change="changeToAyahEnd()"></select>
+                                        <span class="error" ng-show="targetData.selectedAyahEnd == undefined">برجاء تحديد نهاية المقطع</span>
+                                    </label>
+                                </li>
+                            </ul>
+                      
+
+                        <label class="item item-input item-select" ng-show="targetData.targetType==enums.targetType.juz">
+                            <div class="input-label">
+                                اسم الجزء
+                            </div>
+                            <select ng-model="targetData.juzId" ng-show="targetData.targetType==enums.targetType.juz" ng-options="juz.Id as juz.Name for juz in parts" ng-change="validateTarget()"></select>
+                        </label>
+                        <div class="row">
+                            <div class="col">
+                                <label class="item item-input item-stacked-label" ng-show="targetData.targetType==enums.targetType.page">
+                                    <span class="input-label">من</span>
+
+
+                                    <input type="number" pattern="[0-9]*" mode="numeric" name="pageFrom" ng-change="validatePageNumber(targetData.pageFrom,targetData.pageTo)" ng-model="targetData.pageFrom" oninput="validity.valid||(value='');" min="1" max="604" required />
+                                    <span style="color:red" ng-show="!pageFromValid">*</span>
+
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label class="item item-input item-stacked-label" ng-show="targetData.targetType==enums.targetType.page">
+
+                                    <span class="input-label">إلى</span>
+
+                                    <input type="number" pattern="[0-9]*" mode="numeric" name="pageTo" ng-change="validatePageNumber(targetData.pageFrom,targetData.pageTo)" ng-model="targetData.pageTo" oninput="validity.valid||(value='');" min="1" max="604" required />
+
+                                    <span style="color:red" ng-show="!pageToValid">*</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <span ng-show="!ayatMemorizeValid" style="color:red;">سورة البداية يجب ان تكون قبل أو تساوي سورة النهاية  </span>
+            <span ng-show="!ayatValid" style="color:red;">يجب إختيار سورة و آية البداية و النهاية للهدف   </span>
+             <span ng-show="!isTargetValid" style="color:red;">هذا الهدف موجود من قبل </span>
+            <span ng-if="!ispageNumberValid" style="color:red;">يجب اختيار صفحة النهاية أكبر من أو تساوي صفحة البداية</span>
+            <span ng-if="minPageError" style="color:red;">يجب اختيار رقم صفحة البداية لا تقل عن صفحة رقم  2  عند القراءتان الشمرلي و قالون</span>
+            <div class="text-left"> <a ng-click="setTargetDuration()" class="button icon-left button-positive ion-chevron-left" >  المتابعة </a></div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

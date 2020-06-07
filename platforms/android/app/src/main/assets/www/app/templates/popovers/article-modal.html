@@ -1,0 +1,11 @@
+﻿<ion-modal-view id="article-modal">
+    <!--<div class="popup-head">
+        <h3 class="popup-title">الحواشي</h3><h5 class="popup-sub-title"> حاشية رقم {{currentExplanation.ExplanationNumber}}</h5>
+    </div>-->
+    <ion-content class="padding-horizontal">
+        <article class="sub-article">
+          <p compile="currentExplanation.ItemExplanation"></p>
+        </article>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeArticleModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

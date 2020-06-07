@@ -1,0 +1,29 @@
+﻿<ion-view view-title=" فقه الدعاء" ng-controller="articleListController" class="doaa-indexing doaa-indexing1">
+    <ion-content class="dark-bg">
+
+
+
+        <div>
+            <div class="title-index-wrapper">
+                <div id="cover-logo-box-2" class="cover-logo-boxes  title-index">
+                    <div><span><h3>فقه الدعاء</h3></span></div>
+                </div>
+            </div>
+
+            <ul class="list-index list-index1">
+                <li ng-repeat="article in articles track by $index"><a ui-sref="article({id:article.ID})" ng-click="$event.stopPropagation();">{{article.Name}}</a></li>
+
+            </ul>
+
+        </div>
+
+
+
+
+
+    </ion-content>
+
+    <button class="button icon-right" ui-sref="index"><i class="ion-arrow-right-c"></i></button>
+
+
+</ion-view>

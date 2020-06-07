@@ -1,0 +1,49 @@
+﻿<ion-view view-title="المنبهات" ng-controller="AlarmListController">
+    <a ui-sref="alarm({id:0})" class="button button-block button-positive fab-button"> <i class="icon ion-plus"></i></a>
+
+    <ion-content class="padding has-progress">
+        <ion-list class="list-memo list-alarm">
+            
+
+            <ion-item class="item-accordion repeated-item" ng-repeat="target in targets">
+                <a>{{target.title}}</a>
+                <p><small>{{target.timeText}}</small></p>
+                <p><small>{{target.dayText}}</small></p>
+                <label class="toggle toggle-positive memorize-alert">
+                    <input type="checkbox" ng-model="target.notificationModeSelection" ng-change="toggleNotification(target)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+                <button class="button button-icon  icon ion-close-circled"  ng-click="deleteAlarm(target)">حذف</button>
+                <button class="button button-icon  icon ion-edit" ui-sref="alarm({id:target.id})">تعديل</button>
+                
+
+                <!--<i class="icon ion-chevron-left icon-accessory"></i>-->
+            </ion-item>
+
+
+            <label class="item-accordion repeated-item no-data" ng-show="!targets.length">
+                <span class="input-label"> <i class="ion-android-locate"></i> لا يوجد منبهات  </span>
+            </label>
+        </ion-list>
+      
+            <!--<button type="button" class="button button-positive icon-right animated slideInLeft" ng-click="openAddAlarmRingtone('edit')">نغمات التنبيه</button>-->
+      
+    </ion-content>
+    <ion-footer-bar>
+      
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+        <!--<button ng-click="yalla()">
+            <i class="ion-home"></i>
+            alaaaarm
+        </button>-->
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>
+

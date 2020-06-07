@@ -1,0 +1,49 @@
+﻿<ion-modal-view id="alarm-list">
+
+
+
+    <div class="popup-head">
+        <h3 class="popup-title">قائمة نغمات التنبيه</h3>
+        <h5 class="popup-sub-title"> {{nowPlaying}}</h5>
+    </div>
+
+    <ion-content class="padding-horizontal has-footer has-expanded-header">
+
+        <!--<ion-scroll>-->
+        <ion-list class="list-alarm-edit">
+
+
+            <ion-item class="item-accordion repeated-item" ng-repeat="tone in ringtones">
+                <p>{{ tone.name }}</p>
+                <div class="btn-group">
+                    <button class="button button-icon " ng-click="playTone(tone)"
+                            ng-class="{'ion-play':tone.hidePlaybutton === undefined ||(tone.hidePlaybutton == false && resetPlayButtons == true),'ion-pause':tone.hidePlaybutton }"></button>
+                    <!--<button class="button button-icon ion-pause" ng-click="pauseTone(tone)" ng-hide="!tone.hidePlaybutton">
+                       
+                    </button>-->
+                    <button class="button button-icon ion-stop" ng-click="stopTone(tone)">
+                        <!--<a><i class="ion-power"></i></a>-->
+                    </button>
+                    <button class="button button-icon ion-close" ng-disabled="$index == '0'" ng-click="deleteTone(tone)"></button>
+                </div>
+                
+            </ion-item>
+
+
+
+        </ion-list>
+        <!--</ion-scroll>-->
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="downloadMoreAlarms()">تحميل المزيد</button>
+
+            <button class="button button-outline" ng-click="closeEditAlarmRingtoneModal()">غلق</button>
+        </a>
+    </div>
+
+
+
+
+</ion-modal-view>

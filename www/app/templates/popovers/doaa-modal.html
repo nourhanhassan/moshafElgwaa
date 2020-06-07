@@ -1,0 +1,29 @@
+﻿<ion-modal-view id="article-modal" class="doaa-modal">
+    <!--<div class="popup-head">
+        <h3 class="popup-title">مصادر الأدعية</h3><h5 class="popup-sub-title"> مصدر رقم  {{currentDoaaItemSource.SourceNumber}}</h5>
+    </div>-->
+    <ion-content class="padding-horizontal">
+        <article class="sub-article">
+          
+        
+        <h3 class="popup-title">مصدر الدعاء</h3>
+        <p compile="currentDoaaItemSource.ItemSource"></p>
+
+        <div ng-hide="!hasSynonyms">
+            <h3 class="popup-title">المرادفات</h3>
+            <p id="synonyms" compile="currentDoaaItemSource.ItemSynonyms"></p>
+        </div>
+
+        <div ng-hide="!hasType">
+            <h3 class="popup-title">نوع الحديث </h3>
+            <p id="type" compile="currentDoaaItemSource.Type"></p>
+        </div>
+
+        <div ng-hide="!hasReference">
+            <h3 class="popup-title">الراوي</h3>
+            <p id="reference" compile="currentDoaaItemSource.Reference"></p>
+        </div>
+        </article>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeDoaaModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

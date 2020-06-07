@@ -1,0 +1,49 @@
+﻿<ion-view view-title="تحميل الرواية" ng-controller="downloadController">
+    <ion-content class="memorize-form has-progress">
+        <div class="card">
+            <button ng-click="downloadImages(MoshafId,true,0,0)" ng-disabled="disable"> نحميل الرواية كاملة</button>
+            <!--<button ng-click="downloadImages(MoshafId,true,0,0)" ng-disabled="disabled"> نحميل الرواية كاملة</button>-->
+            <div class="row">
+                <div class="col">
+                    <div class="list">
+                        <div class="row">
+                            <div class="col">
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">من صفحة</span>
+
+
+                                    <input type="number" pattern="[0-9]*" mode="numeric" name="pageFrom" ng-change="validatePageNumber(pageFrom,pageTo)" ng-model="pageFrom" oninput="validity.valid||(value='');" min="1" max="604" required />
+                                    <span style="color:red" ng-show="!pageFromValid">*</span>
+
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label class="item item-input item-stacked-label">
+
+                                    <span class="input-label">إلى صفحة</span>
+
+                                    <input type="number" pattern="[0-9]*" mode="numeric" name="pageTo" ng-change="validatePageNumber(pageFrom,pageTo)" ng-model="pageTo" oninput="validity.valid||(value='');" min="1" max="604" required />
+
+                                    <span style="color:red" ng-show="!pageToValid">*</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span ng-if="!ispageNumberValid" style="color:red;">يجب اختيار صفحة النهاية أكبر من أو تساوي صفحة البداية</span>
+            <div class="text-left"> <a ng-click="download(MoshafId,pageFrom,pageTo)" class="button  button-positive ">  تحميل </a></div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

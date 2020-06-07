@@ -1,0 +1,129 @@
+﻿<ion-view view-title="اضافة ختمة" ng-controller="setKhatmaDurationController">
+    <ion-content class="memorize-form  has-progress">
+        <form name="targetForm">
+            <div class="list card animated slideInUp">
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">
+                                عنوان الختمة
+                                <span style="color:red" ng-show="targetForm.title.$error.required"> * </span>
+                            </span>
+                            <input type="text" placeholder="ادخل عنوانا للختمة" name="title" ng-model="targetData.title" required>
+                            <span style="color:red" ng-show="targetForm.$submitted || targetForm.title.$touched">
+                                <span ng-show="targetForm.title.$error.required">من فضلك قم بادخال عنوان للختمة</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                بداية الختمة
+                            </div>
+                            <select ng-model="targetData.juzId" ng-options="juz.Id as juz.Name for juz in parts" ng-change="getTarget(targetData.daysCount)"></select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                نهاية الختمة
+                            </div>
+                            <select ng-model="targetData.juzEndId" ng-options="juz.Id as juz.Name for juz in parts" ng-change="getTarget(targetData.daysCount)"></select>
+                        </label>
+                    </div>
+                </div>
+                <span style="color:red" ng-show="targetForm.$submitted || targetForm.title.$touched">
+                    <span ng-if="targetData.juzEndId<targetData.juzId">يجب أن تكون نهاية الختمة اكبر من بدايتها</span>
+                </span>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <div class="input-label">
+                                مقدار الورد
+                            </div>
+                            <ion-list>
+                                <ion-radio name="targetSectionType" ng-model="targetData.targetSectionType" value="{{enums.khatmaSectionsType.aya}}" ng-change="getTarget(targetData.daysCount)">آية</ion-radio>
+                                <ion-radio name="targetSectionType" ng-model="targetData.targetSectionType" value="{{enums.khatmaSectionsType.page}}" ng-change="getTarget(targetData.daysCount)">صفحة</ion-radio>
+                            </ion-list>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="row row-relate">
+                    <div class="col" ng-show="targetData.targetSectionType==enums.khatmaSectionsType.aya">
+                        <div class="item item-input item-stacked-label">
+                            <span class="input-label"> عدد الايات </span>
+                            <div class="number-input">
+                                <button ng-click="decreaseAya()"></button>
+                                <input type="number" name="ayatCount" ng-change="countDaysAccourdingToAya(ayatCount)" ng-model="targetData.ayatCount" min="1" max="maxAyat" placeholder="عدد الايات" disabled>
+                                <button class="plus" ng-click="increaseAya()"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" ng-show="targetData.targetSectionType==enums.khatmaSectionsType.page">
+                        <div class="item item-input item-stacked-label">
+                            <span class="input-label">  عدد الصفحات </span>
+                            <div class="number-input">
+                                <button ng-click="decreasePages()"></button>
+                                <input type="number" name="pagesCount" ng-change="countDaysAccourdingToPages(pagesCount)" ng-model="targetData.pagesCount" min="1" max="maxPages" placeholder="عدد الصفحات" disabled>
+                                <button class="plus" ng-click="increasePages()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="item item-input item-stacked-label">
+                            <span class="input-label"> مدة الختمة</span>
+                            <div class="number-input">
+                                <button ng-click="decreaseDaysCount()"></button>
+                                <input class="quantity" min="0" max="maxDays" type="number" name="daysCount" ng-change="getTarget(daysCount)" ng-model="targetData.daysCount" disabled>
+                                <button class="plus" ng-click="increaseDaysCount()"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label"> التنبيه </span>
+                            <!--<input type="time" placeholder="اختر وقت التنبيهات">-->
+                            <label class="toggle toggle-positive memorize-alert">
+                                <input type="checkbox" ng-model="targetData.notificationModeSelection" ng-change="toggleNotification()">
+                                <div class="track">
+                                    <div class="handle"></div>
+                                </div>
+                            </label>
+                        </label>
+
+                        <div ng-if="targetData.notificationMode == enums.notificationMode.on">
+                            <label class="item item-input">
+                                <span class="input-label" aria-label="وقت التنبيه " id="Span1">وقت التنبيه </span>
+                                <strong class="ng-binding" style="width:100px;">{{getHour()}}:{{notificationTime.minute}} {{getAmPm()}}</strong>
+                            </label>
+                            <div class="text-center"> <a ng-click="setTime()" class="button  button-positive icon ion-android-alarm-clock icon-right button-block">ضبط التنبيه</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bar text-left animated slideInRight">
+                <button type="submit" class="button button-positive" ng-disabled="targetData.juzEndId<=targetData.juzId" ng-click=" savetarget()">حفظ</button>
+            </div>
+        </form>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

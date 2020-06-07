@@ -1,0 +1,78 @@
+<ion-view hide-nav-bar="hideBar" view-title="القرآن الكريم" ng-class="{'first-page':curPage.pageNum==1 ||curPage.pageNum==2 }" ng-controller="quranTextController">
+    <div id="preloadfont"></div>
+    <ion-content class="quran-page " ng-class="{'mushaf':!hideBar &&curPage.pageNum<3}" delegate-handle="mainScroll" overflow-scroll="false">
+        <ion-slide-box ng-if="slides.length>0" style="height:100%;"
+                       on-slide-changed="slideChanged($index)"
+                       active-slide="selectedSlide"
+                       does-continue="true"
+                       show-pager="false"
+                       disable-scroll="false"
+                       enable-slide-left="enableSlideLeft"
+                       enable-slide-right="enableSlideRight">
+            <ion-slide on-drag-right="dragRight(slide,$event)"
+                       on-drag-left="dragLeft(slide,$event)"
+                       disable-scroll="false"
+                       ng-repeat="slide in slides"
+                       ng-class="{curSlide:slide.page.pageNum==curPage.pageNum}"
+                       curpage="curPage.pageNum"
+                       slide="slide"
+                       iszoomed="isZoomed"
+                       page="{{slide.page.pageNum}}">
+                    <div class=" soura-head">
+                        <span> {{slide.page.firstSurah.JuzName}}</span>
+                        <span>{{slide.page.firstSurah.Name}}</span>
+                    </div>
+                    <div class="soura-body">
+                    <div class="content " ng-class=" {'img-cont':!hideBar,'page1':slide.page.pageNum%2 >0 &&!hideBar,'page2': slide.page.pageNum%2  == 0 &&!hideBar,'no-padding':slide.page.pageNum<3} ">
+                        <div ng-click="goToLastBookmark()" ng-if="lastBookmark !=null && !hideBar&&hideCancelMem && appMode != enums.appModes.memorize" class="ribbon color-{{lastBookmark.color}}">
+                            <a>
+                                <i><span>{{lastBookmark.title}}</span></i>
+                            </a>
+                        </div>
+                        <div>
+                            <div style="position:relative" overflow-scroll="false">
+                                <!--text-->
+                                <div ng-if="curPage.pageNum==slide.page.pageNum" ng-class="{'hidden-ayat':isTestMemorizeMode}">
+                                    <div class="UthmanicHafs quran" style="{{zoomingFontSize>0?'font-size:'+zoomingFontSize+'vw'+';line-height:'+lineHeigh:''}}" ng-repeat="surah in slide.page.surahs">
+                                        <div ng-repeat="aya in surah.ayat | orderBy :'ayahNum'" on-hold="selectAya(aya, true)" on-release="releaseAya()" on-touch-start="releaseAya()" ng-click="toggleBars($event,aya);" ng-dblclick="dbClick()">
+                                            <span ng-if="aya.ayahNum==1" class="soura-name">
+                                                <span style="{{zoomingNameFontSize>0?'font-size:'+zoomingNameFontSize+'vw'+';line-height:'+lineHeigh:''}}">{{surah.Name}}</span>
+                                                <img src="img/SurahTitle-bg.svg" />
+                                            </span>
+                                            <span ng-if="aya.ayahNum==1 && surah.Id!=9&& surah.Id!=1" style="{{zoomingNameFontSize>0?'font-size:'+zoomingNameFontSize+'vw'+';line-height:'+lineHeigh:''}}" class="basmalah">بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ</span>
+							
+                                            <span id="aya{{aya.id}}" ng-class="{selectedAya: aya.id==currentAya.id,
+                                                         werd:aya.isWerd==true&&appMode != enums.appModes.read,
+                                                         late:(aya.isLate==true &&aya.isChecked!=true&&appMode == enums.appModes.memorize)||(appMode == enums.appModes.review && aya.id<firstReviewAyaTask &&isInReviewTarget(aya.id)),
+                                                         doneAya:(aya.isChecked==true &&appMode != enums.appModes.review&&(appMode == enums.appModes.memorize || settings.markMemorizedAyat ==true)) || ((appMode == enums.appModes.review && isInReviewTarget(aya.id) && aya.id>firstReviewAyaTask && aya.isWerd!=true))
+                                                         ,reviewed:(aya.isReviewed==true && appMode == enums.appModes.review ),
+                                                         hasNote:aya.hasNote==true&&isNotesModeEnabled==true,
+                                                         'aya-block':isTestMemorizeMode && hideFrom<=aya.id ,
+                                                         'noFill':isTestMemorizeMode}">{{aya.verse}}</span>
+                                            <span class="aya-number" style="{{zoomingNumFontSize>0?'font-size:'+zoomingNumFontSize+'vw;padding:'+paddingSize+'vw'+';line-height:'+lineHeigh:''}}">{{getArabicNumber(aya.ayahNum)}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end text-->
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="soura-foot">
+                    <span>{{getArabicNumber(slide.page.pageNum)}}</span>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+     <div class="zoom-btn">
+                                    <button ng-click="zoomIn()" ng-if="!hideBar">+</button>
+                                    <button ng-click="zoomOut()" ng-if="!hideBar">-</button>
+                                </div>
+    <div id="canvasBody" style="height:0px">
+        <canvas id="canvas" style="padding-left: 10px; padding-right: 0; margin-left: auto; margin-right: auto; display: none; width: 100%; height :100%;"></canvas>
+    </div>
+</ion-view>
+
+

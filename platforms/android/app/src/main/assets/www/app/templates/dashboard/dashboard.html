@@ -1,0 +1,18 @@
+<ion-view view-title="" ng-controller="dashboardController">
+    <ion-content class="padding" id="dark-bg">
+
+        <img src="img/logo.png" alt="" id="logo" class="animated slideInDown">
+        <div class="button-dash animated slideInDown">
+            <button class="button" ng-click="readMode()"><img src="img/reading-quran.svg" alt=""> القرآن</button>
+            <button class="button" ng-click="doaaBook()"><img src="img/doaa.svg" alt=""> الدعاء</button>
+            <!--<button class="button" ng-click="setAlarm()"><img src="img/alarm.svg" alt=""> المنبه</button>-->
+        </div>
+
+    </ion-content>
+    <button class="button icon-right button-login" ui-sref="register" ng-if="canRegister"><i class="ion-person"></i> تسجيل دخول</button>
+    <div class="button-info animated slideInUp">
+        <button class="button icon-right" ui-sref="settings"><i class="ion-gear-b"></i> الإعدادات</button>
+        <button class="button icon-right" ui-sref="about"><i class="ion-alert"></i> عن التطبيق</button>
+        <button class="button icon-right" ng-click="shareApp()"><i class="ion-share"></i> مشاركة التطبيق</button>
+    </div>
+</ion-view>

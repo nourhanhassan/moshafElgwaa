@@ -1,0 +1,99 @@
+﻿<ion-view view-title="لوحة التحكم" cache-view="false" ng-controller="ControlPanelController" class="control-panel">
+    <!--<ion-content class="padding-vertical">
+        <ion-list class="list-default">
+            <ion-item class="item">
+
+                <a ui-sref="moshafCopy"><span class="list-number-name">الروايات </span></a>
+
+            </ion-item>
+            <ion-item class="item">
+
+                <a ui-sref="remove-telawa"><span class="list-number-name">التلاوات </span></a>
+
+            </ion-item>
+
+        </ion-list>
+    </ion-content>-->
+    <ion-content>
+        <!--<button ng-click="test()" > test</button>-->
+        <h3 class="full-title">الروايات</h3>
+        <ion-list class="list-cp">
+            <ion-item class="item">
+
+                <a ng-click="open(1)"><span class="list-number-name">رواية حفص عن عاصم (طبعة مصحف المدينة ) </span></a>
+                <div class="btn-group">
+                    <button ng-click="download(4)" ng-disabled="hafsCount==enums.mosahfCopy.hafs.pagesCount " class="button icon ion-android-download"></button>
+                    <!--<button ng-click="goToCopySurahs(1)" ng-disabled="hafsCount==0"> الحذف</button>-->
+                    <button ng-click="deleteRowaya(1)" ng-disabled="hafsCount==0" class="button icon ion-android-close"></button>
+                </div>
+
+
+            </ion-item>
+
+            <ion-item class="item">
+                <a ng-click="open(3)"><span class="list-number-name">رواية حفص عن عاصم طبعة الشمرلي</span></a>
+                <div class="btn-group">
+                    <button ng-click="download(4)" ng-disabled="shamrlyCount==enums.mosahfCopy.shamrly.pagesCount " class="button icon ion-android-download"></button>
+                    <!--<button ng-click="goToCopySurahs(3)" ng-disabled="shamrlyCount==0"> الحذف</button>-->
+                    <button ng-click="deleteRowaya(3)" ng-disabled="shamrlyCount==0" class="button icon ion-android-close"></button>
+                </div>
+
+            </ion-item>
+            <ion-item class="item">
+
+                <a ng-click="open(4)"><span class="list-number-name">رواية قالون عن نافع المدني </span></a>
+                <div class="btn-group">
+                    <button ng-click="download(4)" ng-disabled="qalonCount==enums.mosahfCopy.qalon.pagesCount " class="button icon ion-android-download"></button>
+                    <button ng-click="deleteRowaya(4)" ng-disabled="qalonCount==0" class="button icon ion-android-close"></button>
+                    <!--<button ng-click="goToCopySurahs(4)" ng-disabled="noqalon"> الحذف</button>-->
+                </div>
+
+            </ion-item>
+
+            <ion-item class="item">
+
+                <a ng-click="open(5)"><span class="list-number-name">رواية ورش عن نافع  </span></a>
+                <div class="btn-group">
+                    <button ng-click="download(5)" ng-disabled="warshCount==enums.mosahfCopy.warsh.pagesCount " class="button icon ion-android-download"></button>
+                    <button ng-click="deleteRowaya(5)" ng-disabled="warshCount==0" class="button icon ion-android-close"></button>
+                    <!--<button ng-click="goToCopySurahs(4)" ng-disabled="noqalon"> الحذف</button>-->
+                </div>
+
+            </ion-item>
+
+            <!--<ion-item class="item">
+
+                <a ng-click="goToRemoveTelawa()"><span class="list-number-name">مسح التلاوات </span></a>
+
+            </ion-item>-->
+
+        </ion-list>
+        <h3 class="full-title" ng-hide="MoshafId==enums.MoshafId.warsh ||MoshafId==enums.MoshafId.qalon">التلاوات <a ui-sref="downloadTelawas" class="button icon ion-android-download"></a></h3>
+        <ion-list class="list-cp" ng-hide="MoshafId==enums.MoshafId.warsh">
+            <ion-item ng-repeat="telawa in telawat" class="item">
+
+                <a ng-click="goToTelawaSurahs(telawa.name)"><span class="list-number-name">{{telawa.name}} </span></a>
+                <div class="btn-group">
+                    <button ng-click="deleteTelawa(telawa,$index)" ng-disabled="!telawa.canDelete" class="button icon ion-android-close"></button>
+                </div>
+
+            </ion-item>
+            <ion-item class="item" ng-if="telawat.length==0">
+                <p>لا يوجد تلاوات</p>
+            </ion-item>
+
+
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,94 @@
+
+<ion-side-menus enable-menu-with-back-views="true" ng-controller="sideMenuController">
+    <ion-side-menu-content drag-content="false">
+        <ion-nav-bar class="bar-royal" align-title="right">
+            <!--<ion-nav-back-button class="no-text" >
+            </ion-nav-back-button>-->
+            <!--<ion-nav-back-button></ion-nav-back-button>-->
+            <ion-nav-buttons side="right">
+
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="right"></button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="left">
+               
+                    <button class="button button-icon button-clear ion-ios-search" ng-click="search()"></button>
+                <button class="button button-icon button-clear ion-ios-gear-outline"
+                        ui-sref="app.settings"></button>
+                <button class="button button-icon button-clear ion-ios-bookmarks-outline"
+                        ui-sref="app.bookmarks"></button>
+               
+                    <!--<button class="button button-icon button-clear ion-ios-list-outline" ng-click="openModal()"></button>-->
+</ion-nav-buttons>
+        </ion-nav-bar>
+
+        <ion-nav-view name="mainContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="right">
+        <ion-header-bar class="expanded">
+            <img src="img/logo.png" class="avatar motion spin fade">
+
+        </ion-header-bar>
+        <ion-content class="has-expanded-header">
+            <ion-list>
+                <ion-item class="item item-icon-right " nav-clear menu-close-qv ng-class="{ 'active' : getActivePage()=='app.tabs.surahs' ||getActivePage()=='app.tabs.parts' || getActivePage()=='app.tabs.pages'}" href="#/app/tabs/surahs">
+                    <i class="icon ion-ios-list-outline"></i>
+                    الفهرس
+                </ion-item>
+                <ion-item class="item item-icon-right " nav-clear menu-close-qv ng-class="{ 'active' : getActivePage()=='app.page'&&isMemorizeMode!=true && isReviewMode != true}"  ng-click="readMode()">
+                    <i class="icon ion-ios-book-outline"></i>
+                    قراءة
+                </ion-item>
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/bookmarks" ng-class="{ 'active' : getActivePage()=='app.bookmarks' }">
+                    <i class="icon ion-ios-bookmarks-outline"></i>
+                    العلامات المرجعية
+                </ion-item>
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/notes" ng-class="{ 'active' : getActivePage()=='app.notes' }">
+                    <i class="icon ion-ios-compose-outline"></i>
+                    الخواطر
+                </ion-item>
+                 
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/memorized" ng-class="{ 'active' : getActivePage()=='app.memorized' ||getActivePage()=='app.un-memorized'  }">
+                    <i class="icon ion-ios-analytics"></i>
+                    المحفوظ / غير المحفوظ
+                </ion-item>
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/target" ng-class="{ 'active' : getActivePage()=='app.target-list' || getActivePage()=='app.set-target-details' ||getActivePage()=='app.set-target-duration' || getActivePage()=='app.page'&&isMemorizeMode==true  }">
+                    <i class="icon ion-ios-crop"></i>
+                    ورد الحفظ
+                </ion-item>
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/khatma" ng-class="{ 'active' : getActivePage()=='app.khatma-list'}">
+                    <i class="icon ion-ios-crop"></i>
+                    ختم المصحف
+                </ion-item>
+                <!--<ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/reviewTarget" ng-class="{ 'active' : getActivePage()=='app.review-target-list' || getActivePage()=='app.set-review-target-details' ||getActivePage()=='app.set-review-target-duration' || getActivePage()=='app.page'&&isReviewMode==true  }">
+                    <i class="icon ion-ios-crop"></i>
+                    ورد المراجعة
+                </ion-item>-->
+                <!--<ion-item class="item item-icon-right" nav-clear menu-close-qv ng-click="goToBackup()" ng-class="{ 'active' : getActivePage()=='app.register' || getActivePage()=='app.login' || getActivePage()=='app.backup'}">
+                    <i class="icon ion-ios-copy-outline"></i>
+                    النسخ الإحتياطي
+                </ion-item>-->
+                <ion-item class="item-icon-right" menu-toggle="right" href="" ng-click="shareApp()">
+                    <i class="icon ion-share"></i>   مشاركة التطبيق
+                </ion-item>
+                <!--<ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/guides" ng-class="{ 'active' : getActivePage()=='app.guides' }">
+                    <i class="icon ion-ios-color-filter-outline"></i>
+                    دليل المصحف
+                </ion-item>-->
+                <ion-item class="item item-icon-right" nav-clear menu-close-qv href="#/app/settings" ng-class="{ 'active' : getActivePage()=='app.settings' }">
+                    <i class="icon ion-ios-gear-outline"></i>
+                    الإعدادات
+                </ion-item>
+                <ion-item class="item item-icon-right" ng-class="{ 'active' : getActivePage()=='app.about'}" nav-clear menu-close-qv href="#/app/about">
+                    <i class="icon ion-ios-information-outline"></i>
+                    عن التطبيق
+                </ion-item>
+                <!--<ion-item class="item item-icon-right" ng-class="{ 'active' : getActivePage()=='app.doaa'}" nav-clear menu-close-qv href="#/app/doaa/SimpleDoaa">
+                    <i class="icon ion-ios-information-outline"></i>
+                    دعاء الختم
+                </ion-item>-->
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
+
+

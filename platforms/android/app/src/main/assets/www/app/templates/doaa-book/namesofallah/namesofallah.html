@@ -1,0 +1,71 @@
+﻿<ion-view view-title="أسماء الله الحسنى" ng-controller="namesofallahController" class="doaa-indexing doaa-indexing3">
+    <ion-content class="dark-bg">
+
+        <!--<ul id="main-nav">
+            <button class="button icon-right main-tab settings-tab" ng-click="mgoBack()"><i class="ion-arrow-left-c"></i></button>
+            <div class="book-bg animated slideInUp">
+            </div>
+            <li ng-repeat="item in items" ng-click="toggle = !toggle;$event.stopPropagation();" ng-class="{'active' : toggle}">
+                <a><img ng-src="{{item.image}}"></a>-->
+
+
+
+        <div>
+
+            <div class="title-index-wrapper">
+                <div id="cover-logo-box-4" class="cover-logo-boxes title-index">
+                    <div><span><h3>أسماء الله <br />الحسنى</h3></span></div>
+                </div>
+            </div>
+            <!--<div class="cards">
+
+                <div ng-repeat="name in namesOfAllah" class="card-item" ng-class="{'activated' : isSelected(name) }" ng-click="setMaster(name) ;$event.stopPropagation();">
+                    <div class="card-content">
+                        <div class="front">
+                            <a><img ng-src="{{CPapiDomainLink+name.NameOfAllahImage}}"></a>
+                        </div>
+                        <div class="back">
+                            <p id="{{name.Number}}" compile="name.NameOfAllahMeaning"></p>
+                            <button class="button icon-right" ng-click="shareName(name)"><i class="ion-share"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>-->
+            <ul class=" list-index list-index3">
+
+                <li ng-repeat="name in namesOfAllah">
+                    <div class="card-content">
+                        <div class="title-index-wrapper">
+                            <div id="cover-logo-box-5" class="cover-logo-boxes">
+                                <img ng-src="{{CPapiDomainLink+name.NameOfAllahImage}}">
+                            </div>
+                        </div>
+
+
+                        <div class="card-content-text">
+                            <p id="{{name.Number}}" compile="name.NameOfAllahMeaning"></p>
+                            <button class="button icon-right" ng-click="shareName(name)"><i class="ion-share"></i></button>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+
+
+
+
+        </div>
+
+        <!--</li>
+
+
+        </ul>-->
+
+
+    </ion-content>
+    <button class="button icon-right" ui-sref="index"><i class="ion-arrow-right-c"></i></button>
+
+</ion-view>

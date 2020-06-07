@@ -1,0 +1,13 @@
+/*help*/
+.help-slider{background-color: #1d7092;}
+.help-slider img{max-width: 250px;margin:20px auto;border:solid 5px #fff;}
+.help-slider ion-slide div {
+	 min-height: 100vh;
+     color: #fff;
+}
+.help-slider P{font-size:14px; line-height:1.5;}
+.help-slider .slider-pager .slider-pager-page {
+    /* width: 5px; */
+    /* height: 5px; */
+    color:#fff;
+}

@@ -1,0 +1,45 @@
+﻿<ion-modal-view id="play-audio">
+                
+                
+                <ion-content scroll="false">
+                  
+                   <ion-list>
+                       <!--<ion-item ng-disabled="audioSettings.loading" ng-click="increaseRepeat()">
+
+                           <a>{{audioSettings.repeat}}<i class="ion-android-refresh"></i></a>
+                      </ion-item>-->
+                       <ion-item ng-disabled="audioSettings.loading" ng-click="activateRepeatRange()">
+                           <a>{{audioSettings.repeat}}<i class="ion-android-refresh"></i></a>
+                       </ion-item>
+                       <ion-item ng-disabled="audioSettings.loading" ng-class="{'disabled':audioSettings.loading}" ng-click="playAudio(currentAya.prevId)">
+                           <a><i class="ion-ios-fastforward"></i></a>
+                       </ion-item>
+                 
+                       <ion-item ng-disabled="audioSettings.loading" ng-click="playAudio(currentAya.id)">
+                           <a>
+                               <i ng-if="audioSettings.loading == true">  <ion-spinner name="ios"></ion-spinner></i>
+                               <i ng-if="audioSettings.isPlaying != true && audioSettings.loading != true" class="ion-play"></i>
+                               <i ng-if="audioSettings.isPlaying == true" class="ion-pause"></i>
+                           </a>
+                       </ion-item>
+                       <ion-item ng-disabled="audioSettings.loading" ng-class="{'disabled':audioSettings.loading}" ng-click="playAudio(currentAya.nextId)">
+                           <a><i class="ion-ios-rewind"></i></a>
+                       </ion-item>
+                       <ion-item  ng-click="stopAudio()">
+                           <a><i class="ion-power"></i></a>
+                       </ion-item>
+                    </ion-list>
+                    <p class="marquee"><span>سورة {{getPlayingAyaSurahName()}} - {{currentRecitation.native_name}}</span></p>
+                    <select class="audio-quality" ng-model="audioSettings.quality" ng-change="changeQuality()" ng-hide="true">
+                        <option value="high">جودة عالية</option>
+                        <option value="" selected>جودة متوسطة</option>
+                        <option value="low">جودة ضعيفة</option>
+                    </select>
+                    <select class="audio-quality" ng-model="audioSettings.rate" ng-init="audioSettings.rate='1.0'" ng-change="changeRate()">
+                        <option value="1.5">سرعة عالية</option>
+                        <option value="1.0">سرعة متوسطة</option>
+                        <option value="0.5">سرعة بطيئة</option>
+                    </select>
+                    
+                </ion-content>
+            </ion-modal-view>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "493135587407",
+    "firebase_url": "https://moshaf-elgwaa-2cc04.firebaseio.com",
+    "project_id": "moshaf-elgwaa-2cc04",
+    "storage_bucket": "moshaf-elgwaa-2cc04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493135587407:android:94c2473b8742a0d034623a",
+        "android_client_info": {
+          "package_name": "com.qvsite.MoshafThird"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493135587407-2e4pu0tp1hdpdhddm0jm7aqbhpin00f6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7LEKOXG7-KXOBIHifPg0MYGvd7KHZFis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493135587407-2e4pu0tp1hdpdhddm0jm7aqbhpin00f6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

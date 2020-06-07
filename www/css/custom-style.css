@@ -1,0 +1,556 @@
+
+.slider-slide {
+    direction: rtl;
+}
+
+ion-content .target-list {
+    padding-bottom: 70px;
+}
+
+.soura {
+    font-family: 'Scheheraza' !important;
+    margin-top: 10px;
+}
+
+    .soura a {
+        font-family: inherit !important;
+        font-size: 1.8em;
+        line-height: 1.2;
+        text-align: justify;
+        display: block;
+    }
+
+        .soura a i, .item-in-list i {
+            font-size: 20px !important;
+            vertical-align: baseline;
+            margin-right: 14px;
+        }
+
+.platform-ios .aya, .platform-ios .soura {
+    font-family: Arial-unicode !important;
+    margin-left: 6px;
+}
+
+    .platform-ios .aya p, .platform-ios .aya p span {
+        font-family: UthmanicHafs !important;
+    }
+
+.soura.padding span {
+    font-family: inherit !important;
+}
+
+.content-read {
+    font-size: 114%;
+    padding-bottom: 10px;
+}
+
+.soura.padding {
+    background: transparent;
+}
+
+.platform-ios .bar.bar-stable .title {
+    height: 70%;
+}
+
+.platform-ios ion-side-menu ion-header-bar h1 img {
+    top: 2px;
+}
+
+ion-content.scroll-content.quran-page {
+    /* padding-top: 0; */
+}
+
+ion-content.quran-page.has-header {
+    /* bottom: 0; */
+}
+
+p.aya-search {
+    font-family: 'UthmanicHafs','Amiri Quran', Arial !important;
+}
+
+.main-title {
+    font-size: 1.6em;
+}
+
+polygon, rect, text {
+    fill: transparent;
+}
+
+.soura.padding p {
+    font-size: 1.5em;
+}
+
+.full-image {
+    pointer-events: none;
+    position: relative;
+    /*width: 115%;
+     margin: auto;
+     left: 7.5%;*/
+}
+
+.img-cont {
+    /*width: 115%;
+     left: 7.5%;*/
+}
+
+.quran-svg {
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.hidden-ayat.quran-svg {
+    z-index: 1;
+}
+
+.ayaOption {
+    color: #6fd7aa;
+    font-size: 2em !important;
+    /* padding-left: 4px; */
+    /* position: relative; */
+    /* top: -2px; */
+    position: relative;
+    margin: auto;
+    top: -23px;
+    right: 2px;
+}
+
+/*.popover-backdrop.active,.backdrop,.popover-wrapper{
+ background-color:transparent;
+ width:0%;
+ height:0%;
+ height:0%;
+ }*/
+
+.selectedAya {
+    fill: #fdf1d0 !important;
+    /* opacity: 0.5; */
+}
+
+.quran .selectedAya {
+    background-color: rgba(229, 219, 193, 0.6) !important;
+    z-index: -1;
+    position: relative;
+}
+
+.werd {
+    fill: #f7d7a6;
+    opacity: 0.5;
+}
+
+.quran .werd {
+    background-color: rgba(247, 215, 166, .6);
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.late {
+    fill: #fb9595 !important;
+    opacity: 0.5;
+}
+
+.quran .late {
+    background-color: rgba(251, 149, 149, .6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.doneAya {
+    fill: #b5deb0 !important;
+    opacity: 0.5;
+}
+
+.quran .doneAya {
+    background-color: rgba(181, 222, 176, 0.6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.hasNote {
+    fill: #c3c3c3 !important;
+    opacity: 0.5;
+}
+
+.quran .hasNote {
+    background-color: rgba(169, 169, 169, 0.6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.reviewed {
+    fill: #c2ff87 !important;
+    opacity: 0.5;
+}
+
+.quran .reviewed {
+    background-color: rgba(194, 255, 135, .6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.deluminate .werd {
+    fill: #584614;
+    opacity: 0.5;
+}
+
+.deluminate .quran .werd {
+    background-color: rgba(88, 70, 20, .6);
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.deluminate .late {
+    fill: #5f2828 !important;
+    opacity: 0.5;
+}
+
+.deluminate .quran .late {
+    background-color: rgba(95, 40, 40, .6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.deluminate .doneAya {
+    fill: #144411 !important;
+    opacity: 0.5;
+}
+
+.deluminate .quran .doneAya {
+    background-color: rgba(83, 123, 81, .6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.deluminate .selectedAya {
+    fill: #475973 !important /*opacity: 0.5;*/;
+}
+
+.deluminate .quran .selectedAya {
+    background-color: rgba(104, 125, 136, .6) !important /*opacity: 0.5;*/;
+    z-index: -1;
+    position: relative;
+}
+
+.deluminate .hasNote {
+    fill: #717070 !important;
+    opacity: 0.5;
+}
+
+.deluminate .quran .hasNote {
+    background-color: rgba(113, 112, 112, .6) !important;
+    z-index: -1;
+    position: relative;
+    opacity: 1;
+}
+
+.deluminate .reviewed {
+    fill: #4e6f07 !important;
+    opacity: 0.5;
+}
+
+.deluminate .quran .reviewed {
+    background-color: rgba(78, 111, 7, .6) !important;
+    opacity: 1;
+    z-index: -1;
+    position: relative;
+}
+
+.noFill {
+    fill: transparent !important;
+}
+
+.quran .noFill {
+    fill: initial !important;
+}
+/*.p
+ /*.popover-open {
+ pointer-events: all;
+ }*/
+.bookmarkMsg {
+    bottom: auto;
+    top: 70vh;
+}
+
+
+
+
+.has-tabs {
+    /* top: 80px; */
+    /* height:100% !important; */
+}
+
+    .has-tabs ion-content {
+        top: 1px;
+        bottom: 0px;
+        height: calc(100vh - 79px);
+    }
+
+.platform-ios .index-page .item:last-of-type {
+    margin-bottom: 18px;
+}
+
+.aya, .item p.aya span {
+    /* font-family: 'UthmanicHafs'; */
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+.popup-body span {
+    direction: rtl;
+    display: inline-block;
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: justify;
+}
+
+.no-backdrop, .popover-backdrop.active {
+    position: inherit;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+}
+
+.popover-open {
+    pointer-events: auto;
+}
+/*#play-audio.slide-in-up.ng-enter-active, #play-audio.slide-in-up > .ng-enter-active{
+    top: calc(100% - 40px);
+}*/
+.validation-text {
+    color: #c11a1a;
+    vertical-align: super;
+}
+
+#preloadfont {
+    font-family: UthmanicHafs;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    display: inline-block;
+}
+
+.popup-body {
+    text-align: center;
+}
+
+.color-icon.active {
+    border: solid 6px #ffffff;
+}
+
+
+
+.color-text-red {
+    color: #900;
+}
+
+.color-text-green {
+    color: #345b2f;
+}
+
+.color-text-blue {
+    color: #1a5298;
+}
+
+.color-text-olive {
+    color: #716535;
+}
+
+.color-text-purple {
+    color: #86319c;
+}
+
+.color-text-yellow {
+    color: #c79d3e;
+}
+
+.ionic_timepicker_popup {
+    direction: rtl;
+}
+
+.time_picker_arrows {
+    direction: ltr;
+}
+
+.ionic_timepicker_popup span {
+    padding: 0px;
+}
+
+.ionic_timepicker_popup .button_set {
+    border-color: #111F2F !important;
+    background-color: #111F2F !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.ionic_timepicker_popup .button_close {
+    border-color: #111F2F !important;
+    background: transparent !important;
+    color: #111F2F !important;
+    border: solid 1px #111F2F !important;
+}
+
+.ionic_timepicker_popup .heading {
+    background-color: #fff !important;
+    color: #111F2F !important;
+}
+
+.checked {
+    color: green !important;
+}
+
+.un-valid {
+    border-color: red !important;
+}
+
+#toast-container > .toast-info {
+    background-color: #111F2F;
+}
+
+
+.loading-container .loading {
+    background: transparent;
+}
+
+ion-spinner * {
+    width: 70px;
+    height: 70px;
+    stroke: #c18e1a;
+}
+
+.spinner svg {
+    width: 50px;
+    height: 50px;
+}
+
+#play-audio ion-spinner * {
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
+    stroke: rgba(255, 255, 255, 0.9);
+}
+
+.night-mode {
+    background-color: black;
+}
+
+    .night-mode img {
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+    }
+
+
+
+.note-on {
+    z-index: 20;
+}
+
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-tabs {
+    top: 100px;
+}
+
+    .platform-ios.platform-cordova:not(.fullscreen) .has-tabs .has-header {
+        top: 0px;
+    }
+
+.input-label {
+    width: auto;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .menu .avatar {
+    top: 15px
+}
+
+.badge.badge-stable.aya-num-decoration {
+    font-family: initial;
+    font-size: .5em;
+    color: #1c416a;
+    /* border: solid 1px; */
+    background-color: transparent;
+    background-image: url(../img/aya-number.svg);
+    background-size: cover;
+    background-position: center;
+    height: 28px;
+    width: 30px;
+    background-repeat: no-repeat;
+    line-height: 23px;
+}
+/*.hidden-ayat {z-index:1;}*/
+
+body.keyboard-open.platform-ios #add-note.modal.active {
+    top: calc(100vh - 580px) !important;
+}
+
+.platform-cordova:not(.fullscreen) #add-note.modal.active {
+    top: calc(100vh - 250px) !important;
+}
+
+.platform-ios .advanced-panel.subheader {
+    top: 60px;
+}
+
+.platform-ios .list-default .item-input-wrapper input {
+    width: 100%
+}
+
+[nav-view-transition][nav-view-direction] {
+    background-color: transparent;
+}
+
+.platform-ios .box, .platform-ios .page1, .platform-ios .page2 {
+    position: relative;
+    /* min-height: calc(100vh - 77px); */
+    padding: 0px;
+}
+
+.hidden-ayat .aya-block {
+    fill: #e2c38a !important;
+    stroke-width: 1px;
+    stroke: #d0af73;
+    opacity: 1;
+}
+
+.hidden-ayat .quran .aya-block {
+    background-color: #e2c38a !important;
+    color: #e2c38a;
+    border: solid 1px #d0af73;
+    opacity: 1;
+}
+
+.deluminate .hidden-ayat .quran .aya-block {
+    background-color: #02132d !important;
+    color: #02132d;
+    border: solid 1px #17262d;
+    opacity: 1;
+}
+
+.platform-ios .box, .platform-ios .page1 {
+    padding-left: 0px;
+}
+
+.platform-ios .box, .platform-ios .page2 {
+    padding-right: 0px;
+}
+
+.platform-ios .rev-parts .list {
+    top: 41px;
+}
+
+.platform-ios.platform-cordova:not(.fullscreen) .has-subheader {
+    top: 94px !important;
+}

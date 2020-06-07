@@ -1,0 +1,44 @@
+﻿<ion-view view-title="ورد المراجعة" ng-controller="ReviewTargetListController">
+    <a ui-sref="app.set-review-target-details" class="button button-block button-positive fab-button"> <i class="icon ion-plus"></i></a>
+
+    <ion-content id="home">
+
+
+
+
+        <div class="target-list">
+
+
+            <div class=" goals goals2">
+
+                <div class="list  list-custom" ng-repeat="target in targets ">
+
+
+                    <div class="item-goal">
+                        <label ng-click="review(target)" class="item item-input" ng-class="{'done':target.progress==100,'in-progress':target.progress!=100}">
+                            <span class="input-label">
+                                <i class="ion-android-locate"></i>  {{target.title}}
+                            </span>
+                            <div class="progress">
+                                <div class="progress-bar  " ng-class="{'onehundred' :target.progress >75 ,'seventyfive':target.progress <=75 && target.progress >25 ,'twentyfive':target.progress <=25 }" ng-style="{width: target.progress + '%'}">{{target.progress}}%</div>
+                            </div>
+
+                        </label>
+                        <a ng-click="deleteTarget(target,$event)" class="button button-icon button-small button-positive icon ion-close-round"></a>
+
+                        <a ng-if="target.progress<100" ng-click="editTarget(target,$event)" class="button button-icon button-small button-positive icon ico2 ion-edit"></a>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div ng-show="!targets.length" class="list list-custom">
+                <label class="item item-input done">
+                    <span class="input-label"> <i class="ion-android-locate"></i> لا يوجد ورد  </span>
+                </label>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

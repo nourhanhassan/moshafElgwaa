@@ -1,0 +1,133 @@
+﻿<ion-view view-title="استكمال بيانات الورد" class="main-bg" ng-controller="setReviewTargetDurationController">
+    <div class="advanced-panel subheader">
+        <span>
+            عدد الآيات المتبقية
+            <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfAyah - targetData.noOfMemorizedAyat)}}</strong>
+            <strong ng-show="!targetData.ayatCount">-----</strong>
+
+            يتحقق تقريبا خلال <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfDays)}}</strong><strong ng-show="!targetData.ayatCount">-----</strong> يوم
+
+
+        </span>
+    </div>
+
+    <ion-content class="has-subheader">
+
+
+        <form name="targetForm">
+
+            <ion-list class="list list-default">
+                <ion-item class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" name="title" ng-model="targetData.title" required placeholder="عنوان ورد المراجعة" ng-blur="checkReviewTargetDuplicate(targetData.title,targetData.id)" ng-pattern="validations.title.pattern" />
+                    </label>
+                    <span style="color:red" ng-show="(targetForm.title.$error.required)">
+                        <span ng-show="targetForm.title.$error.required">  * </span>
+
+                    </span>
+                </ion-item>
+                <ion-item class="item " ng-if="titleDuplicate">
+                    <a style="color:red">
+                        <span class="list-number-name">
+                            <i class="ion-information-circled"></i>
+                            عنوان ورد المراجعة موجود من قبل!
+                        </span>
+
+                    </a>
+                </ion-item>
+                <ion-item class="item " ng-if="targetForm.title.$error.pattern">
+                    <a style="color: red; display: inline-block; white-space: normal; ">
+                        <span class="list-number-name">
+                            <i class="ion-information-circled"></i>
+                            {{validations.title.msg}}
+                        </span>
+
+                    </a>
+                </ion-item>
+                <ion-item class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="number" name="ayatCount" ng-change="vaildateAyatCount()" ng-model="targetData.ayatCount" oninput="validity.valid||(value='');" min="1" max="targetData.noOfAyah" required placeholder="عدد الآيات" />
+                    </label>
+                    <span style="color:red" ng-show="(targetForm.ayatCount.$error.required)">
+                        <span ng-show="targetForm.ayatCount.$error.required">  * </span>
+
+                    </span>
+                    <button ng-click="increaseAyatCount()" class=" button-small icon ion-plus-round button-positive"></button>
+
+                    <button ng-click="decreaseAyatCount()" class=" button-small icon ion-minus-round button-positive"></button>
+                </ion-item>
+                <ion-item class="item"> <a class=""><span class="list-number-name">  عدد الآيات تم مراجعتها</span> <small class="badge badge-stable">{{getArabicNumber(targetData.noOfMemorizedAyat)}} من {{getArabicNumber(targetData.noOfAyah)}}</small></a> </ion-item>
+                <ion-item class="item"> <a><span class="list-number-name">الورد المقرر</span> <small class="badge badge-stable">مراجعة {{getArabicNumber(targetData.ayatCount)}} آيات</small></a> </ion-item>
+            </ion-list>
+
+
+            <ion-list class="radio-buttons">
+                <ion-item>
+                    <input type="radio" name="periodtype" value="{{enums.periodType.daily}}" ng-model="targetData.periodType" ng-change="setTargetNotificationTime()"><label>يومي</label>
+                    <div class="bullet">
+                        <div class="line zero"></div>
+                        <div class="line one"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line four"></div>
+                        <div class="line five"></div>
+                        <div class="line six"></div>
+                        <div class="line seven"></div>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <input type="radio" name="periodtype" value="{{enums.periodType.weekly}}" ng-model="targetData.periodType" ng-change="setTargetNotificationTime()"><label>أسبوعي</label>
+                    <div class="bullet">
+                        <div class="line zero"></div>
+                        <div class="line one"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line four"></div>
+                        <div class="line five"></div>
+                        <div class="line six"></div>
+                        <div class="line seven"></div>
+                    </div>
+                </ion-item>
+            </ion-list>
+            <ion-list class="list">
+                <div class="list" ng-if="targetData.periodType==enums.periodType.daily" style="visibility:hidden;">
+                    <div class="item item-input item-select">
+                        <div class="input-label">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="list" ng-if="targetData.periodType==enums.periodType.weekly">
+                    <div class="item item-input item-select">
+                        <div class="input-label">
+                            اختر اليوم
+                        </div>
+                        <select ng-model="notificationTime.dayofWeek" ng-options="day.index as day.name for day in enums.weekDays" ng-change="setTargetNotificationTime()"></select>
+                    </div>
+
+                </div>
+                <ion-item class="item item-toggle">
+                    التنبيه
+                    <label class="toggle toggle-positive">
+                        <input type="checkbox" ng-model="targetData.notificationModeSelection" ng-change="toggleNotification()">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </ion-item>
+                <div ng-if="targetData.notificationMode == enums.notificationMode.on">
+                    <label class="item item-input">
+                        <span class="input-label" aria-label="وقت التنبيه " id="Span1">وقت التنبيه </span>
+                        <strong class="ng-binding" style="width:100px;">{{getHour()}}:{{notificationTime.minute}} {{getAmPm()}}</strong>
+                    </label>
+
+
+                    <div class="text-center"> <a ng-click="setTime()" class="button  button-positive icon ion-android-alarm-clock icon-right button-block">ضبط التنبيه</a></div>
+                </div>
+            </ion-list>
+
+
+            <div class="padding text-left"> <a ng-click="saveTarget()" ng-disabled="titleDuplicate || targetForm.title.$invalid" class="button icon-left button-positive ion-android-checkmark-circle"> حفظ </a></div>
+        </form>
+    </ion-content>
+</ion-view>

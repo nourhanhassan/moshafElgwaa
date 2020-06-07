@@ -1,0 +1,42 @@
+﻿<ion-view view-title="مصحف الجواء " ng-controller="marksController">
+    <ion-content>
+        <ion-list class="list-primary">
+
+
+            <ion-item class="item" ng-repeat="mark in bookmarks">
+                <a ng-click="setActiveBookMark(mark)">
+                    <p class="aya" ng-class="{UthmanicHafs: MoshafId==enums.mosahfCopy.hafs.id,UthmanicQaloon: MoshafId==enums.mosahfCopy.qalon.id,UthmanicWarsh: MoshafId==enums.mosahfCopy.warsh.id}">{{mark.aya.verse}}</p>
+
+
+
+                </a>
+                <small class="badge badge-stable"><img src="img/icon1.png" />سورة {{mark.surahName}} <img src="img/icon2.png" />آية {{getArabicNumber(mark.aya.ayahNum)}}<img src="img/icon3.png" /> صفحة {{getArabicNumber(mark.pageNumber)}}</small>
+                <div class="ribbon color-{{mark.color}}">
+                    <a ng-click="changeBookmarkTypeColor(mark)">
+                        <i><span>{{mark.title}} </span></i>
+                    </a>
+                </div>
+                <a ng-click="deleteBookmark(mark)" class="icon ion-ios-close"></a>
+            </ion-item>
+
+
+
+            <ion-item class="item" ng-if="bookmarks.length==0">
+                <a href="#">
+                    <p>لا يوجد علامات مرجعية</p>
+
+                </a>
+
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard"><i class="ion-home"></i></button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()"><i class="ion-arrow-left-c"></i></button>
+
+    </ion-footer-bar>
+    <a class="button button-block button-positive fab-button" ng-click="showAddBookMarkTypeModal()"><i class="icon ion-plus"></i></a>
+</ion-view>

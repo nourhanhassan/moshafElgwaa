@@ -1,0 +1,48 @@
+﻿<ion-view view-title="إضافة أعضاء" ng-controller="GroupAddMembersController">
+    <ion-content class="memorize-form has-progress">
+        <div class="card">
+            <div class="list-memo" ng-show="!Members.length && !isHaveMembers">
+                <label class="item-accordion repeated-item no-data">
+                    <span class="input-label"> <i class="ion-android-locate"></i> لا يوجد مستخدمين حاليين للتطبيق في قائمة اتصالاتك ..من فضلك قم بمشاركة التطبيق اولا</span>
+                </label>
+                <div class="text-center" style="margin-bottom:10px;">
+                    <a class="button icon ion-share button-positive " ng-show="!Members.length" ng-click="share()">مشاركة التطبيق </a>
+                </div>
+            </div>
+            <div class="list list-members list-add" ng-show="Members.length">
+                <ion-checkbox class="item item-divider" ng-model="selectedAll" ng-checked="checkVal" ng-click="checkAll(selectedAll)">تحديد الكل</ion-checkbox>
+               
+                
+                <div ng-repeat="member in Members" class="item">
+                    <ion-checkbox name="selectedMembers[]"
+                                  value="{{member.ID}}"
+                                  ng-checked="selection.indexOf(member.ID) > -1"
+                                  ng-click="toggleSelection(member.ID)" ng-model="member.Selected">
+                        <h3><i class="ion-person"></i> {{member.Name}} ({{member.DisplayName}})</h3>
+                    </ion-checkbox>
+                </div>
+            </div>
+            <div class="item item-divider text-center"> تم اختيار عدد {{selectedItems}} أعضاء </div>
+            <div>
+                <span style="color: red" ng-hide="groupValid">
+                    <span class="error-validation">يجب إضافة أعضاء إلى المجموعة</span>
+                </span>
+            </div>
+            <div class="text-center">
+                <a ng-click="setTarget()" class="button button-positive icon ion-chevron-left icon-left button-block">متابعة وتعيين الهدف</a>
+                <a class="button button-positive icon ion-chevron-right icon-right button-block" ui-sref="group-add({id:GroupID})">رجوع لبيانات المجموعة</a>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,33 @@
+﻿<ion-modal-view id="add-note" class="pull-up">
+
+
+    <ion-content class="padding">
+        <form name="addNote">
+            <div class="popup-head">
+                <h3 class="popup-title">سجل خاطرة</h3><h5 class="popup-sub-title">
+
+                    سورة {{noteModel.surahName }} - آية {{getArabicNumber(noteModel.ayaNumber) }}
+
+                </h5>
+            </div>
+
+
+            <div class="list list-inset" ng-class="{'un-valid':addNote.noteText.$error.pattern}">
+                <label class="item item-input">
+                    <textarea ng-model="noteModel.text" ng-pattern="enums.validations.stringMixed350.pattern" name="noteText" placeholder="اكتب خاطرتك هنا" required rows="3"></textarea>
+                    <span ng-if="addNote.noteText.$invalid && !addNote.noteText.$pristine" class="validation-text">
+                        <span ng-show="addNote.noteText.$error.required"> *</span>
+                    </span>
+                </label>
+
+            </div>
+
+
+            <a class="button-bar">
+                <button ng-disabled="addNote.noteText.$invalid" class="button button-positive" ng-click="saveNote()">حفظ</button>
+                <button class="button button-positive button-outline" ng-click="cancelNote()">إلغاء</button>
+            </a>
+        </form>
+    </ion-content>
+
+</ion-modal-view>

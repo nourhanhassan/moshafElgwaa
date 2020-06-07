@@ -1,0 +1,11 @@
+﻿<ion-modal-view id="share-modal">=
+    <div class="popup-head">
+        <h3 class="popup-title">اختر صورة</h3></h5>
+    </div>
+    <ion-content class="">
+        <div ng-repeat="item in shareImages">
+            <a ng-click="shareImage(item)"><img ng-src="{{item.image}}"></a>
+        </div>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeShareModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

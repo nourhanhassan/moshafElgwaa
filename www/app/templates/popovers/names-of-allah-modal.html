@@ -1,0 +1,9 @@
+﻿<ion-modal-view id="names-modal">
+    <div class="popup-head">
+        <h3 class="popup-title"> {{nameOfAllah.NameOfAllah}}</h3><h5 class="popup-sub-title"> شرح الاسم {{nameOfAllah.NameOfAllah}}</h5>
+    </div>
+    <ion-content class="padding-horizontal has-footer has-header">
+        <p compile="nameOfAllah.NameOfAllahMeaning"></p>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeNamesOfAllahModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

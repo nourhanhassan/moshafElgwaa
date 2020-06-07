@@ -1,0 +1,17 @@
+<ion-view view-title="السور" ng-controller="surahsController">
+    <ion-content class="padding-vertical">
+        <ion-list class="list-default">
+            <ion-item class="item" ng-repeat="item in surahs" ng-click="goToPage(item.StartPage)">
+                <a>
+                    <span class="list-number-name">{{item.Name}} </span>
+                    <!--<i ng-if="item.isCompleted" class="guide icon ion-ios-checkmark"></i>-->
+                <small class="badge badge-stable">صفحة : {{getArabicNumber(item.StartPage)}}</small>
+                </a>
+                <!--<div id="progress-bar-container" ng-if="getSurahProgress(item)>0">
+                    <div class="progress-bar-child memo-progress"></div>
+                    <div class="progress-bar-child shrinker timelapse" ng-style="{width:100-getSurahProgress(item) + '%'}"></div>
+                </div>-->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

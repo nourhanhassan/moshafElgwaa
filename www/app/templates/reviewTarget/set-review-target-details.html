@@ -1,0 +1,46 @@
+﻿
+
+<ion-view view-title="تعيين ورد مراجعة" class="main-bg" ng-controller="setReviewTargetDetailsController">
+
+    <div class="has-footer review-target" >
+        <div class="dir-rtl has-header" ng-if="AyatMemorizedList.length!=0">
+            <ion-list>
+                <ion-checkbox class="checkAll" ng-model="model.allSurahsChecked" ng-click="toggleAllMemorizedAyatCheck()"> اختر الكل</ion-checkbox>
+            </ion-list>
+        </div>
+        <ion-content scrolly="true" class="has-footer ">
+            <ion-list class="list-default rev-parts">
+                <ion-item class="item" ng-if="AyatMemorizedList.length==0">
+                    <a>
+                        <span class="list-number-name">  لا يوجد آيات محفوظة لمراجعتها   </span>
+
+
+                    </a>
+                </ion-item>
+
+                <ion-checkbox ng-repeat="surah in AyatMemorizedList"
+                              ng-model="surah.inReviewWerd"
+                              ng-change="checkSurah(surah)" class="item s-row">
+                    <a ui-sref="app.page({page:surah.memorizedayat[0].PageNum})">
+                        <span class="list-number-name"> {{surah.Name}} <i ng-if="surah.isCompleted ">(كاملة)</i> </span>
+                        <small ng-if="surah.memorizedayat.length>1" class="badge badge-stable  badge-balanced">  آية  {{getArabicNumber(surah.memorizedayat[0].ayahNum)}}  -  آية  {{getArabicNumber(surah.memorizedayat[surah.memorizedayat.length-1].ayahNum)}}</small>
+                        <small ng-if="surah.memorizedayat.length==1" class="badge badge-stable  badge-balanced">آية {{getArabicNumber(surah.memorizedayat[0].ayahNum)}} </small>
+
+                    </a>
+                </ion-checkbox>
+
+                <!--<ion-item></ion-item>-->
+
+            </ion-list>
+            <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+            <!--<span ng-if="!ispageNumberValid" style="color:red;">يجب اختيار هدف واحد على الأقل</span>-->
+        </ion-content>
+        <!--<div ng-if="AyatMemorizedList.length!=0" class="text-left  bar-footer"> <a ng-click="setTargetDuration()" class="button icon-left button-positive ion-chevron-left">  المتابعة </a></div>-->
+
+    </div>
+    <div ng-if="AyatMemorizedList.length!=0" class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button style=" height: 100%;" ng-click="setTargetDuration()" class="button icon-left button-positive ion-chevron-left">  المتابعة </button>
+        </a>
+    </div>
+</ion-view>

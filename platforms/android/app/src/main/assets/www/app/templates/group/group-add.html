@@ -1,0 +1,56 @@
+﻿
+<ion-view view-title="{{title}}" class="main-bg" ng-controller="GroupAddController">
+  <ion-content class="memorize-form has-progress">
+    <div class="card">
+      
+        <form name="groupForm" ng-submit="setGroupMembers()" >
+               <div class="row">
+              <div class="col">
+                <div class="list">
+                  <label class="item item-input item-stacked-label">
+                      <span class="input-label">اسم المجموعة</span>
+                      <input type="text" name="name" placeholder="اسم المجموعة" ng-model="groupData.name" ng-pattern="validations.stringMixed150.pattern" ng-required="true">
+                  </label>
+                    <span style="color: red" ng-show="groupForm.name.$invalid && !groupForm.name.$pristine || checkIfGroupNameExist()">
+                        <span ng-show="groupForm.name.$error.required && !groupForm.name.$pristine " class="error-validation">حقل الزامي</span>
+                        <span ng-show="groupForm.name.$error.pattern && !groupForm.name.$pristine " class="error-validation">{{validations.stringMixed150.msg}}</span>
+                        <span ng-show="checkIfGroupNameExist()" class="error-validation">هذا الاسم موجود من قبل</span>
+
+                    </span>
+
+                </div>
+       </div>
+
+               </div>
+      
+        
+        <div class="row">
+            <div class="col">
+                <label class="item item-input item-stacked-label row-add">
+            <div class="input-label">
+              إضافة الأعضاء
+            </div>
+            <button type="submit" class="button button-positive button-icon icon ion-plus" ng-disabled="groupForm.$invalid "></button>
+          </label>
+            </div>
+        </div>
+        
+        
+        
+        
+              
+         </form>
+    </div>
+  </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,31 @@
+Cordova build --release 
+
+then take app-release-unsigned.apk from \platforms\android\app\build\outputs\apk\release
+
+put in folder beside qvision_key.keystore
+open command prompt here
+then execute this command
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore qvision_key.keystore app-release-unsigned.apk Qvision
+
+password : 111admin 
+
+jarsigner -verify -verbose -certs app-release-unsigned.apk
+
+zipalign -v 4 app-release-unsigned.apk  moshafelgwaa.apk 
+
+
+User Name : admin  Email: admin@gmail.com  Mobile : 0123456789 
+code: 1234
+
+
+
+--------------- notes
+https://forum.ionicframework.com/t/jarsigner-unable-to-open-jar-file-android-release-unsigned-apk/116777
+
+https://stackoverflow.com/questions/16099902/zipalign-is-not-recognized-as-an-internal-or-external-command
+
+
+
+
+

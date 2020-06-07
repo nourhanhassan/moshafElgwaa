@@ -1,0 +1,43 @@
+﻿<ion-view view-title="تفاصيل الختمة" ng-controller="setKhatmaDetailsController">
+    <div class="bar bar-subheader item-input-inset bar-royal advanced-panel">
+        تم  <strong>{{finished}}</strong> {{type}} من <strong>{{total}}</strong>
+        <button class="button button-icon  icon ion-close-circled" ng-click="deleteTarget(targetData,$event)">حذف</button>
+
+    </div>
+    <ion-content class="has-subheader memorize-form has-progress">
+        <div class="card">
+            <div class="list list-default animated slideInUp">
+                <ion-item class="item"> <a><span class="list-number-name"> {{targetData.title}}</span>  </a></ion-item>
+                <ion-item class="item"> <a><span class="list-number-name">بداية من {{juzName}}</span> <small class="badge badge-stable"></small></a> </ion-item>
+                <ion-item class="item"> <a><span class="list-number-name">ورد اليوم</span> <small class="badge badge-stable">{{current}}</small></a> </ion-item>
+                <ion-item class="item" ng-if="showAlarm">
+                    <a class="">
+                        <span class="list-number-name">المنبه</span> <small class="badge badge-stable">{{notificationTime}}</small>
+                    </a>
+                </ion-item>
+             </div>
+            <div class=" animated slideInUp">
+                <span class="title">مستوى التقدم</span>
+                <div id="progress-bar-container" class="progress-large">
+                    <div class="progress-bar-child memo-progress"></div>
+                    <div class="progress-bar-child shrinker timelapse" ng-style="{ 'width': progress + '%' }"></div>
+                </div>
+            </div>
+            <div class="bar bar-buttons animated slideInRight" ng-hide="targetData.KatmaFinished==1">
+                <button class="button button-positive" ng-click="go()">الذهاب للورد</button>
+                <button class="button button-calm" ng-click="done()">أتممت الورد</button>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

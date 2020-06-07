@@ -1,0 +1,40 @@
+﻿<ion-popover-view class="animated slideInUp" style="top:{{pos.top}}px">
+    <ion-content scroll="false">
+        <ion-list>
+            <ion-item>
+
+                <a ng-click="moveBookMark(aya)"><i class="ion-bookmark" ng-class="{'checked':aya.marked}"></i><span> علامة </span></a>
+            </ion-item>
+            <ion-item ng-click="shareAya(aya)" ng-hide="MoshafId==enums.MoshafId.qalon">
+                <a><i class="ion-android-share-alt"></i><span>مشاركة</span></a>
+            </ion-item>
+            <ion-item ng-hide="MoshafId==enums.MoshafId.qalon ||MoshafId==enums.MoshafId.warsh">
+                <a ng-click="showAudioBar(aya)"><i class="ion-play"></i><span>استماع</span></a>
+            </ion-item>
+            <ion-item>
+                <a ng-class="{'checked':aya.isFav}" ng-click="favoriteAya(aya)">
+                    <i class="ion-star"></i>
+                    <span ng-if="aya.isFav"> مفضلة</span>
+                    <span ng-if="!aya.isFav"> مفضلة</span>
+                </a>
+            </ion-item>
+            <ion-item>
+                <a ng-if="appMode != enums.appModes.review" ng-class="{'checked':aya.isChecked}" ng-click="memorizeAya(aya)">
+                    <i class="ion-checkmark-round"></i>
+                    <span ng-if="aya.isChecked">محفوظة</span>
+                    <span ng-if="!aya.isChecked">غير محفوظة</span>
+                </a>
+            </ion-item>
+            <ion-item>
+                <a ng-click="showMemorizePageChecklist(aya.id)"><i class="icon ion-ios-list-outline"></i><span>حفظ الآيات</span></a>
+            </ion-item>
+            <ion-item>
+                <a ng-click="AddEditNote(aya)"><i class="ion-document-text"></i><span>خاطرة</span></a>
+            </ion-item>
+            <ion-item ng-hide="MoshafId==enums.MoshafId.warsh">
+                <a ng-click="showTafseerModal(aya.id)"><i class="ion-ios-book"></i><span>تفسير</span></a>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+</ion-popover-view>

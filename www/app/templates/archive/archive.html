@@ -1,0 +1,20 @@
+﻿<div ng-controller="archiveController">
+    <ion-tabs class="tabs-color-active-positive tabs-top">
+        <ion-tab title="العلامات المرجعية" href="#/archive/bookmarks">
+            <ion-nav-view name="archive-bookmarks"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="الخواطر" href="#/archive/notes">
+            <ion-nav-view name="archive-notes"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="المفضلة" href="#/archive/favs">
+            <ion-nav-view name="archive-favs"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+
+    <ion-footer-bar>
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard"><i class="ion-home"></i></button>
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()"><i class="ion-arrow-left-c"></i></button>
+    </ion-footer-bar>
+</div>

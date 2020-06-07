@@ -1,0 +1,50 @@
+﻿<ion-view view-title="الأدعية" class=" doaa-article" ng-controller="doaasController">
+
+    <!--<ion-content class="dark-bg has-footer has-subfooter">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false"  disable-scroll="true">
+            <ion-slide ng-repeat="doaa in Doaas track by $index" style="{{'background-color:' +bgcolor+';font-family:'+fontFamily+';font-size:'+fontSize+'px'+';line-height:'+lineHeigh}}">
+                <ion-content>
+                    <div class="page">
+                        <h3 class="title-main">{{doaa.Name}}</h3>
+                        <article ng-style="{'color': fontcolor}" id="{{$index}}" class="main-article" compile="doaa.DoaaContent"></article>
+                        <article ng-style="{'color': fontcolor}" id="doaaMeaning" ng-hide="!hasDoaaMeaning" class="sub-article" compile="doaa.DoaaMeanings"></article>
+                    </div>
+                </ion-content>
+
+            </ion-slide>
+
+
+        </ion-slide-box>
+    </ion-content>-->
+
+    <ion-content class="slider-slides">
+        <div class="slider-slide" style="{{'background-color:' +bgcolor+';font-family:'+fontFamily+';font-size:'+fontSize+'px'+';line-height:'+lineHeigh}}">
+            <ion-content>
+                <div class="page">
+                    <h3 class="title-main">{{Doaas[currentDoaaIndex].Name}}</h3>
+                    <article ng-style="{'color': fontcolor}" id="{{Doaas[currentDoaaIndex].ID}}" class="main-article" compile="Doaas[currentDoaaIndex].DoaaContent"></article>
+                    <article ng-style="{'color': fontcolor}" id="doaaMeaning" ng-hide="!hasDoaaMeaning" class="sub-article" compile="Doaas[currentDoaaIndex].DoaaMeanings"></article>
+                </div>
+            </ion-content>
+
+        </div>
+
+    </ion-content>
+
+    <div class="bar bar-footer">
+        <button class="button button-icon icon ion-chevron-left" ng-click="slideHasChanged(currentDoaaIndex+1)"></button>
+        <div class="title">{{currentDoaaName}}</div>
+        <button class="button button-icon icon ion-chevron-right" ng-show="currentDoaaIndex>0" ng-click="slideHasChanged(currentDoaaIndex-1)"></button>
+    </div>
+    <div class="bar bar-subfooter">
+
+        <!--<button class="button icon-right" ng-click="shareApp()"><i class="ion-share"></i></button>-->
+        <button class="button icon-right" ng-click="addToFavourite()"><i class="ion-star"></i></button>
+        <button class="button icon-right" ng-click="moveBookMark()"><i class="ion-bookmark"></i></button>
+        <!--<div class="zoom-btn">
+            <button ng-click="zoomIn()">+</button>
+            <button ng-click="zoomOut()">-</button>
+        </div>-->
+    </div>
+
+</ion-view>

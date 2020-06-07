@@ -1,0 +1,26 @@
+﻿<ion-view view-title="مسح التلاوات" ng-controller="removeTelawaController">
+    <ion-content class="padding-vertical">
+        <ion-list class="list-default">
+            <ion-item ng-repeat="telawa in telawat" class="item">
+
+                <a ng-click="goToTelawaSurahs(telawa.name)"><span class="list-number-name">{{telawa.name}} </span></a>
+                <button ng-click="deleteTelawa(telawa,$index)" ng-disabled="!telawa.canDelete"> مسح</button>
+            </ion-item>
+            <ion-item class="item" ng-if="telawat.length==0">
+                <p>لا يوجد تلاوات</p>
+            </ion-item>
+
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

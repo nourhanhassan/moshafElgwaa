@@ -1,0 +1,39 @@
+﻿<ion-modal-view id="alarm-list">
+
+
+
+    <div class="popup-head">
+        <h3 class="popup-title">قائمة نغمات التنبيه</h3><h5 class="popup-sub-title"> حدد نغمة التنبيه</h5>
+    </div>
+ 
+    <ion-content class="padding-horizontal has-footer has-expanded-header">
+
+        <!--<ion-scroll>-->
+        <ion-list >
+
+
+            <ion-radio ng-repeat="tone in ringtones"
+                       ng-model="targetAlarm.soundName"
+                       ng-value="tone.name"
+                       ng-change="playTone(tone)">
+                <p>{{ tone.name }}</p>
+            </ion-radio>
+
+
+
+        </ion-list>
+        <!--</ion-scroll>-->
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="saveAddAlarmRingTone()">حفظ</button>
+            <button class="button button-positive button-outline" ng-click="closeAddAlarmRingTone()">إلغاء</button>
+            <!--<button class="button button-positive" ng-click="downloadMoreAlarms()">تحميل المزيد</button>-->
+        </a>
+    </div>
+
+
+
+
+</ion-modal-view>

@@ -1,0 +1,24 @@
+<ion-view view-title="الحفظ" ng-controller="memotabController">
+    <ion-content class="padding-vertical">
+        <ion-list class="list-memo">
+            <div class=" repeated-item">
+                <ion-item class="item-stable" href="#/target">
+                    &nbsp;
+                    الحفظ المنفرد
+                </ion-item>
+            </div>
+            <div class=" repeated-item">
+                <ion-item class="item-stable" href="#/register">
+                    &nbsp;
+                    الحفظ فى مجموعة
+                </ion-item>
+            </div>
+            <div class="animated slideInRight">
+                <hr>
+                <ion-item class="item-positive">
+                    <a class="item-content" ng-click="memorized()">المحفوظ/ غير المحفوظ</a>
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

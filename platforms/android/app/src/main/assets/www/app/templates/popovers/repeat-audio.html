@@ -1,0 +1,94 @@
+﻿<ion-modal-view id="repeat-audio">
+    <ion-content scroll="false">
+        <form name="form">
+            <div style="height: 5em">
+
+            </div>
+
+
+            <ul class="list card">
+                <li class="item item-toggle">
+                    <i class="icon ion-paintbucket"></i>
+                    <span ng-if="model.formRepeatFlag" class="input-label"> نوع التكرار : مقطعي</span>
+                    <span ng-if="!model.formRepeatFlag" class="input-label"> نوع التكرار : فردي</span>
+
+                    <label class="toggle toggle-positive">
+                        <input type="checkbox" ng-model="model.formRepeatFlag" ng-change="changeRepeatFlag()">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col">
+                            <div class="item item-input item-stacked-label">
+                                <span class="input-label"> عدد مرات التلاوة</span>
+                                <div class="number-input">
+                                    <button ng-click="decreaseRepeat()"></button>
+                                    <input class="quantity" min="1" max="audioSettings.maxRepeat" type="number" name="daysCount" ng-model="audioSettings.repeat" disabled>
+                                    <button class="plus" ng-click="increaseRepeat()"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul ng-if="model.formRepeatFlag" class="list card">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="icon ion-person-stalker"></i>
+                        من سورة
+                    </div>
+                    <select ng-required="model.formRepeatFlag" ng-options="surah as surah.Name for surah in allSurahs track by surah.Id"
+                            ng-model="model.selectedSurahStart" ng-change="changeToSurahStart()" ng-selected="model.selectedSurahStart.Id==surah.Id"></select>
+
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        <i class="icon ion-person-stalker"></i>
+                        من اّية
+                    </div>
+                    <select ng-required="model.formRepeatFlag" ng-options="ayah as ayah.ayahNum for ayah in surahAyatStart track by ayah.id"
+                            ng-model="model.selectedAyahStart" ng-change="changeToAyahStart()" ng-selected="model.selectedAyahStart.id==ayah.id"></select>
+                    <span class="error" ng-show="model.selectedAyahStart == undefined">برجاء تحديد بداية المقطع</span>
+
+                </label>
+
+                </li>
+                <li>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            <i class="icon ion-person-stalker"></i>
+                            الى سورة
+                        </div>
+                        <select ng-required="model.formRepeatFlag" ng-options="surah as surah.Name for surah in allSurahs track by surah.Id"
+                                ng-model="model.selectedSurahEnd" ng-change="changeToSurahEnd()"></select>
+
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            <i class="icon ion-person-stalker"></i>
+                            الى اّية
+                        </div>
+                        <select ng-required="model.formRepeatFlag" ng-options="ayah as ayah.ayahNum for ayah in surahAyatEnd track by ayah.id"
+                                ng-model="model.selectedAyahEnd" ng-change="changeToAyahEnd()"></select>
+                        <span class="error" ng-show="model.selectedAyahEnd == undefined">برجاء تحديد نهاية المقطع</span>
+                        <span class="error" ng-show="model.selectedAyahEnd.id <model.selectedAyahStart.id">يجب ان تكون نهاية الايات اكبر من البداية</span>
+                    </label>
+                </li>
+            </ul>
+            <div class="animated slideInRight">
+                <hr>
+                <ion-item style="background-color: #111f2f;color: #bcaa85;overflow: visible;position: relative;padding: 12px;margin: 10px 25px;width: inherit;min-height: unset">
+                    <a ng-if="model.formRepeatFlag" style="color: #bcaa85;position: relative;z-index: 1;background-color: #111f2f;display: block;width: 100%;padding: 10px;border-radius: 5px; text-align: center;" ng-click="saveRange()">إنتقال</a>
+                    <a ng-if="!model.formRepeatFlag" style="color: #bcaa85;position: relative;z-index: 1;background-color: #111f2f;display: block;width: 100%;padding: 10px;border-radius: 5px; text-align: center;" ng-click="listen()">إستمرار</a>
+                </ion-item>
+            </div>
+            <!--<div class="padding text-left"> <a ng-click="saveRange()" class="button button-positive"> حفظ </a></div>-->
+        </form>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeRepeatModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

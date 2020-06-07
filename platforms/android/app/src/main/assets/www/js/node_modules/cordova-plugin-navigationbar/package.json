@@ -1,0 +1,62 @@
+{
+  "_from": "cordova-plugin-navigationbar",
+  "_id": "cordova-plugin-navigationbar@1.0.31",
+  "_inBundle": false,
+  "_integrity": "sha1-eFy+lSPpcTiq7bJtzSPMu8kcnPo=",
+  "_location": "/cordova-plugin-navigationbar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-navigationbar",
+    "name": "cordova-plugin-navigationbar",
+    "escapedName": "cordova-plugin-navigationbar",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-navigationbar/-/cordova-plugin-navigationbar-1.0.31.tgz",
+  "_shasum": "785cbe9523e97138aaedb26dcd23ccbbc91c9cfa",
+  "_spec": "cordova-plugin-navigationbar",
+  "_where": "E:\\projects\\MobileApp2\\Moshaf_Elgwaa\\ELgwaa_Mobile",
+  "author": {
+    "name": "cranberrygame"
+  },
+  "bugs": {
+    "url": "https://github.com/cranberrygame/cordova-plugin-navigationbar/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-navigationbar",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "hide and auto hide navigation bar.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/cranberrygame/cordova-plugin-navigationbar#readme",
+  "keywords": [
+    "cordova",
+    "plugin",
+    "navigationbar",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-navigationbar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cranberrygame/cordova-plugin-navigationbar.git"
+  },
+  "version": "1.0.31"
+}

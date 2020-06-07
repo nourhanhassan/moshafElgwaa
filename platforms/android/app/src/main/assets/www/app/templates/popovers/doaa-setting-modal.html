@@ -1,0 +1,63 @@
+﻿<ion-modal-view id="doaa-setting-modal" class="modal-half">
+
+    <ion-content>
+        <ion-list class="list-cp">
+            <ion-item class="item">
+
+                <a href="#"><span class="list-number-name">لون الخلفية</span></a>
+                <div class="btn-group color-btn-group">
+                    <button ng-click="switchBgColor('#fff',0)" ng-class="activeBgColors[0]?'active':''" class="button white-btn"></button>
+                    <button ng-click="switchBgColor('#dedede',1)" ng-class="activeBgColors[1]?'active':''" class="button grey-btn"></button>
+                    <button ng-click="switchBgColor('#f5f5dc',2)" ng-class="activeBgColors[2]?'active':''" class="button beige-btn"></button>
+                    <button ng-click="switchBgColor('#d9f3d9',3)" ng-class="activeBgColors[3]?'active':''" class="button seagreen-btn"></button>
+
+                </div>
+
+
+            </ion-item>
+            <ion-item class="item">
+
+                <a href="#"><span class="list-number-name">لون الخط</span></a>
+                <div class="btn-group color-btn-group">
+                    <button ng-click="switchFontColor('#333',0)" ng-class="activeFontColors[0]?'active':''" class="button black-btn"></button>
+                    <button ng-click="switchFontColor('#0f7112',1)" ng-class="activeFontColors[1]?'active':''" class="button green-btn"></button>
+                    <button ng-click="switchFontColor('#1852d2',2)" ng-class="activeFontColors[2]?'active':''" class="button blue-btn"></button>
+                    <button ng-click="switchFontColor('#983612',3)" ng-class="activeFontColors[3]?'active':''" class="button brown-btn"></button>
+
+                </div>
+
+
+            </ion-item>
+            <ion-item class="item">
+
+                <a href="#"><span class="list-number-name">حجم الخط</span></a>
+                <div class="btn-group size-btn-group">
+                    <!--<div class="item range">
+                        <i class="small-btn">ع</i>
+                        <input type="range" ng-change="zoomIn()" ng-model="model.value" name="fontsize" value="{{model.value}}" min="6" max="20" step="1">
+                        <i class="large-btn">ع</i>
+                    </div>-->
+                    <!--ng-class="fontSize >= maxFontSize?'active':''"-->
+                    <button ng-click="zoomIn()" class="button large-btn active" >+ع</button>
+                    <!--ng-class="fontSize <= minFontSize?'active':''"-->
+                    <button ng-click="zoomOut()" class="button small-btn active" >-ع</button>
+                </div>
+
+
+            </ion-item>
+            <ion-item class="item">
+
+                <a href="#"><span class="list-number-name">نوع الخط</span></a>
+                <div class="btn-group font-btn-group">
+                    <button ng-click="switchFontFamily(0)" ng-class="activeFont[0]?'active':''" class="button font1">أبجد</button>
+                    <button ng-click="switchFontFamily(1)" ng-class="activeFont[1]?'active':''" class="button font2">أبجد</button>
+                    <button ng-click="switchFontFamily(2)" ng-class="activeFont[2]?'active':''" class="button font3">أبجد</button>
+                    <button ng-click="switchFontFamily(3)" ng-class="activeFont[3]?'active':''" class="button font4">أبجد</button>
+                    <button ng-click="switchFontFamily(4)" ng-class="activeFont[4]?'active':''" class="button font5">أبجد</button>
+                </div>
+
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-modal-view>

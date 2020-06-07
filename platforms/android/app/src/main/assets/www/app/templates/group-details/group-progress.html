@@ -1,0 +1,86 @@
+﻿<ion-view view-title="تفاصيل المجموعة" class="main-bg" ng-controller="GroupProgressController" >
+    <div class="button-bar tabs-bar tabs tabs-top">
+                <button class="tab-button" ui-sref="group-details({id:groupId})">بيانات المجموعة</button>
+                <button class="tab-button active">تقدم المجموعة</button>
+            </div>
+    <ion-content class="has-progress memorize-form has-tabs-top">
+        
+            
+            <div class="card">
+                <div class="row">
+                    <div class="col">
+                        <ion-list class="list list-default animated slideInUp">
+                            <ion-item class="item">
+                                <a class="">
+                                    <span class="list-number-name"> اسم المجموعة</span>
+                                    <small class="badge badge-stable">{{groupData.name}}</small>
+                                </a>
+                            </ion-item>
+
+                            <ion-item class="item">
+                                <a class="">
+                                    <span class="list-number-name"> الهدف</span>
+                                    <small class="badge badge-stable">{{targetData.title}}</small>
+                                </a>
+                            </ion-item>
+                            <ion-item class="item">
+                                <a class="" ng-show="targetData.targetType == 1">
+                                    <span class="list-number-name"> عدد الآيات</span>
+                                    <small class="badge badge-stable">{{targetData.totalAyatCount}}</small>
+                                </a>
+                                <a class="" ng-show="targetData.targetType == 4">
+                                    <span class="list-number-name"> عدد الآيات</span>
+                                    <small class="badge badge-stable">{{targetData.ayatCount}}</small>
+                                </a>
+                                <a class="" ng-show="targetData.targetType !=1 && targetData.targetType !=4">
+                                    <span class="list-number-name"> عدد الصفحات</span>
+                                    <small class="badge badge-stable">{{targetData.totalPagesCount}}</small>
+                                </a>
+                            </ion-item>
+                            <ion-item class="item">
+                                <a class="">
+                                    <span class="list-number-name"> الورد المقرر</span>
+                                    <small class="badge badge-stable" ng-show="targetData.targetType==1"> حفظ من آية{{startWerd.num}}({{startWerd.surahName}}) إلى آية {{endWerd.num}} ({{endWerd.surahName}})</small>
+                                    <small class="badge badge-stable" ng-show="targetData.targetType!=1&&targetData.targetType != 4&&startPage!=endPage"> حفظ من صفحة{{startPage}} إلى صفحة {{endPage}} </small>
+                                    <small class="badge badge-stable" ng-show="targetData.targetType!=1 &&targetData.targetType != 4&&startPage==endPage "> حفظ  صفحة{{startPage}}  </small>
+                                    <small class="badge badge-stable" ng-show="targetData.targetType == 4">{{targetData.title}}</small>
+
+                                 </a>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="animated slideInLeft">
+                    <span class="title">أعضاء المجموعة</span>
+
+                    <div class="list list-members">
+                        <div class="item ion-person item-icon-left" ng-repeat="user in groupUsers">
+                            <a  ng-if="groupData.IsAdmin && user.IsLate && !user.IsAdmin" ng-click="sendLateNotification(user.UserId)" class="badge badge-dark"><i class="icon ion-ios-bell"></i></a>
+                            {{user.UserName}}
+                            <strong class="note" ng-if="user.IsLate" ng-show="targetData.targetType==1 || targetData.targetType==4">تأخير{{user.LateAyatCount}} آيات</strong>
+                            <strong class="note" ng-if="user.IsLate" ng-show="targetData.targetType!=1&& targetData.targetType!=4">تأخير{{user.LatePagesCount}} صفحة</strong>
+                            <div id="progress-bar-container">
+                                <span class="ayatCount" ng-show="targetData.targetType==1 || targetData.targetType==4">{{user.MemorizedAyatCount}} آيات </span>
+                                <span class="ayatCount" ng-show="targetData.targetType!=1 && targetData.targetType!=4">{{user.MemorizedPagesCount}} صفحة </span>
+                                <div class="progress-bar-child memo-progress"></div>
+                                <div ng-style="{width: user.Progress + '%'}" class="progress-bar-child shrinker timelapse" ng-class="{'five':user.IsLate,'onehundred':!user.IsLate}"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

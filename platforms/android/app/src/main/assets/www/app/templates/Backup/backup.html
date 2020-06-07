@@ -1,0 +1,29 @@
+﻿
+<ion-view view-title="النسخ الإحتياطي" ng-controller="backupController">
+
+    <ion-content>
+        <form name="login">
+            <div class="list">
+
+                <label ng-class="{'un-valid':loginData.isNameExist}" class="item item-input item-stacked-label">
+                    <span style="color:red" ng-show="login.name.$error.required">*</span>
+                    <span class="input-label">اسم المستخدم</span>
+                    <input ng-model="user.name" disabled name="name" type="text" placeholder="اسم المستخدم">
+
+                </label>
+
+                <div class="padding text-center">
+                    <div class="button-bar">
+                        <button ng-click="uploadUserData()" class="button button-positive icon-right "><i class="icon ion-ios-cloud-upload-outline"></i>   بدء النسخ  </button>
+                        <a ng-if="user.hasBackup" ng-click="getUserLastBackup()" class="button button-positive button-outline icon-right"><i class="icon ion-ios-cloud-download-outline"></i>  إستعادة البيانات  </a>
+                    </div>
+                    <a href="#/app/register" class="button button-small">  مستخدم جديد</a>
+
+                </div>
+            </div>
+
+        </form>
+    </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-tabs class="tabs-color-active-positive tabs-icon-top" ng-controller="tabsController">
+    <!-- read Tab -->
+    <ion-tab href="#/dashboard" class="main-tab home-tab animated slideInRight" icon="ion-home">
+
+    </ion-tab>
+    <!-- pager Tab -->
+    <ion-tab class="icon" title="الفهرس" href="#/tab/pager">
+        <ion-nav-view name="tab-pager"></ion-nav-view>
+    </ion-tab>
+    <!-- read Tab -->
+    <ion-tab class="icon read-icon" title="القراءة" ng-click="readMode()">
+        <ion-nav-view name="tab-page"></ion-nav-view>
+    </ion-tab>
+    <!-- khatma Tab -->
+    <ion-tab class="icon khatma-icon" title="الختمة" href="#/tab/khatma">
+        <ion-nav-view name="tab-khatma"></ion-nav-view>
+    </ion-tab>
+    <!-- memo Tab -->
+    <ion-tab class="icon memo-icon" title="الحفظ" href="#/tab/memo">
+        <ion-nav-view name="tab-memo"></ion-nav-view>
+    </ion-tab>
+    <!-- settings Tab -->
+    <ion-tab href="#/settings" class="main-tab settings-tab animated slideInLeft" icon="ion-gear-b">
+        <ion-nav-view name="tab-settings"></ion-nav-view>
+    </ion-tab>
+
+</ion-tabs>
+

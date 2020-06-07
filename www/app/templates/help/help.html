@@ -1,0 +1,204 @@
+<i<!--on-view view-title="مساعدة" hide-nav-bar="true" ng-controller="helpController">
+	   
+  <ion-content scroll="false">
+<!--      <ion-slide-page-box on-slide-changed="slideHasChanged($index)" class="help-slider" options="options" slider="data.slider">-->
+  <ion-slides  class="help-slider" options="options" slider="data.slider"  on-slide-changed="slideHasChanged()" >
+    <ion-slide-page>
+      <div class="text-center padding" style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr1.jpg"/>
+        <p>لوضع او حذف علامة مرجعية اضغط على تلك العلامة </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr2.jpg"/>
+        <p>عند الضغط مطولاً على الآية يظهر اختيار وضع علامة مرجعية ومن ثم اضغط على الايقونة لوضع علامة مرجعية </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+       <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr3.jpg"/>
+        <p>عند الضغط على العلامة المرجعية يتم الرجوع الي الصفحة او الآية الكريمة </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr4.jpg"/>
+        <p>عند الضغط على الأهداف يتم الانتقال الي صفحة الأهداف ومنها يمكن الاطلاع على الأهداف المحفوظة او إضافة هدف جديد </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr5.jpg"/>
+        <p>يمكن للمستخدم تعيين هدف جديد (سورة – جزء) باختيار الجزء او السورة المراد حفظهم </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+       <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr6.jpg"/>
+        <p>يمكن للمستخدم تحديد عدد الآيات المراد حفظها في اليوم او خلال الأسبوع عن طريق تحديد عدد آيات الورد.
+كما يقوم التطبيق بإرسال تنبيه للمستخدم بالورد المقرر حفظه وذلك عن طريق اختيار أولا دورية الحفظ يومي /اسبوعي ثم ضبط التنبيه لتحديد الموعد المناسب للحفظ ليتم ارسال التنبيهات في ذلك الموعد.
+</p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr7.jpg"/>
+        <p>من خلال تعديل الهدف يتمكن المستخدم من تعديل دورية الحفظ من يومي الي اسبوعي والعكس، وفي حال اختيار دورية الحفظ " اسبوعي" يجب على المستخدم تحديد اليوم المناسب له في الأسبوع ووقت التنبيه ثم الضغط على "حفظ " ليتم حفظ التعديل</p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr8.jpg"/>
+        <p>في الصفحة الخاصة بالهدف يتمكن المستخدم من متابعة تقدم الهدف من خلال عدد الآيات التي تم حفظها، ويمكن الذهاب الي الورد المقرر للحفظ من خلال "ورد الحفظ" كما يمكن تعديل بيانات الهدف الحالي من " تعديل " ويمكن إيقاف التنبيه اليومي او الأسبوعي للهدف من خلال " إيقاف التنبيه ". </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+       <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr9.jpg"/>
+        <p>يظهر الورد المقرر حفظه يوميا او أسبوعيا باللون الأخضر </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr10.jpg"/>
+        <p>عند الضغط مطولا على الآية يظهر اوبشن " تم الحفظ" وعند الضغط عليه يتم الانتقال الي الآية التالية ويتغير لون الآية التي تم حفظها الي اللون الرصاصي  </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr11.jpg"/>
+        <p>تتلون الآيات باللون الرصاصي في حالة حفظ الآيات 
+        <br />
+تتلون الآيات باللون الأحمر في حالة التأخر في حفظ الآيات 
+<br />
+تتلون الآيات باللون الأخضر لتشير للورد المطلوب حفظه 
+</p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+       <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr12.jpg"/>
+        <p>يظهر التذكير بموعد حفظ الورد اليومي او الأسبوعي </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr13.jpg"/>
+        <p>تحتوي القائمة الجانبية في التطبيق علي: -الحفظ – الفهرس – المرجعيات – عن التطبيق </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+      <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr14.jpg"/>
+        <p>عند الضغط على "قراءة " يتم العودة الي اخر صفحة تمت قراءتها ويتم التوقف عندها  </p></div>
+    </ion-slide-page>
+    <ion-slide-page>
+       <div class="text-center padding"  style=" background-color: #1d7092;color: #fff; height: 100vh;">
+        <img src="img/help/scr15.jpg"/>
+        <p>يمكن البحث عن كلمة او اية عن طريق كتابة الكل   مة او جزء من الآية المراد البحث عنها لتظهر النتائج المطابقة لمعايير البحث</p></div>
+    </ion-slide-page>
+          <ion-slide-page>
+    </ion-slide-page>
+          </ion-slides>
+      <div>
+          <button ui-sref="app.page"> خروج</button>
+      </div>
+</ion-content>
+  
+</ion-view>-->
+<ion-view view-title="مساعدة" hide-nav-bar="true">
+	   
+  <ion-content>
+  
+  <ion-slide-box class="help-slider" on-slide-changed="slideHasChanged($index)">
+  <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr1.jpg"/>
+        <p>لوضع او حذف علامة مرجعية اضغط على تلك العلامة </p></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr2.jpg"/>
+        <p>عند الضغط مطولاً على الآية يظهر اختيار وضع علامة مرجعية ومن ثم اضغط على الايقونة لوضع علامة مرجعية </p></div>
+  </ion-slide>
+  <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr3.jpg"/>
+        <p>عند الضغط على العلامة المرجعية يتم الرجوع الي الصفحة او الآية الكريمة </p></div>
+  </ion-slide>
+  <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr4.jpg"/>
+        <p>عند الضغط على الأهداف يتم الانتقال الي صفحة الأهداف ومنها يمكن الاطلاع على الأهداف المحفوظة او إضافة هدف جديد </p></div>
+  </ion-slide>
+  
+  <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr5.jpg"/>
+        <p>يمكن للمستخدم تعيين هدف جديد (سورة – جزء) باختيار الجزء او السورة المراد حفظهم </p></div>
+    
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr6.jpg"/>
+        <p>يمكن للمستخدم تحديد عدد الآيات المراد حفظها في اليوم او خلال الأسبوع عن طريق تحديد عدد آيات الورد.
+كما يقوم التطبيق بإرسال تنبيه للمستخدم بالورد المقرر حفظه وذلك عن طريق اختيار أولا دورية الحفظ يومي /اسبوعي ثم ضبط التنبيه لتحديد الموعد المناسب للحفظ ليتم ارسال التنبيهات في ذلك الموعد.
+</p></div>
+  </ion-slide>
+  
+   <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr7.jpg"/>
+        <p>من خلال تعديل الهدف يتمكن المستخدم من تعديل دورية الحفظ من يومي الي اسبوعي والعكس، وفي حال اختيار دورية الحفظ " اسبوعي" يجب على المستخدم تحديد اليوم المناسب له في الأسبوع ووقت التنبيه ثم الضغط على "حفظ " ليتم حفظ التعديل</p></div>
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr8.jpg"/>
+        <p>في الصفحة الخاصة بالهدف يتمكن المستخدم من متابعة تقدم الهدف من خلال عدد الآيات التي تم حفظها، ويمكن الذهاب الي الورد المقرر للحفظ من خلال "ورد الحفظ" كما يمكن تعديل بيانات الهدف الحالي من " تعديل " ويمكن إيقاف التنبيه اليومي او الأسبوعي للهدف من خلال " إيقاف التنبيه ". </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr9.jpg"/>
+        <p>يظهر الورد المقرر حفظه يوميا او أسبوعيا باللون الأخضر </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr10.jpg"/>
+        <p>عند الضغط مطولا على الآية يظهر اوبشن " تم الحفظ" وعند الضغط عليه يتم الانتقال الي الآية التالية ويتغير لون الآية التي تم حفظها الي اللون الرصاصي  </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr11.jpg"/>
+        <p>تتلون الآيات باللون الرصاصي في حالة حفظ الآيات 
+        <br />
+تتلون الآيات باللون الأحمر في حالة التأخر في حفظ الآيات 
+<br />
+تتلون الآيات باللون الأخضر لتشير للورد المطلوب حفظه 
+</p></div>
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr12.jpg"/>
+        <p>يظهر التذكير بموعد حفظ الورد اليومي او الأسبوعي </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr13.jpg"/>
+        <p>تحتوي القائمة الجانبية في التطبيق علي: -الحفظ – الفهرس – المرجعيات – عن التطبيق </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+    <div class="text-center padding">
+        <img src="img/help/scr14.jpg"/>
+        <p>عند الضغط على "قراءة " يتم العودة الي اخر صفحة تمت قراءتها ويتم التوقف عندها  </p></div>
+  </ion-slide>
+  
+   <ion-slide>
+   <div class="text-center padding">
+        <img src="img/help/scr15.jpg"/>
+        <p>يمكن البحث عن كلمة او اية عن طريق كتابة الكل   مة او جزء من الآية المراد البحث عنها لتظهر النتائج المطابقة لمعايير البحث</p></div>
+  </ion-slide>
+         <ion-slide-page>
+    </ion-slide-page>
+</ion-slide-box>
+  
+  
+ 
+</ion-content>
+  
+</ion-view>

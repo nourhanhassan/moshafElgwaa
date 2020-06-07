@@ -1,0 +1,153 @@
+<ion-view hide-nav-bar="hideBar" view-title="مصحف الجواء - قراءة" ng-class="{'first-page':curPage.pageNum==1 ||curPage.pageNum==2 }" ng-controller="pageController">
+    <!--<ion-nav-title ng-click="removePopovers()"> {{title}}</ion-nav-title>
+    <ion-nav-buttons side="left">
+
+        <button class="button button-icon button-clear ion-ios-search" ng-click="removePopovers();search();"></button>
+
+        <button class="button button-icon button-clear ion-android-more-vertical" ng-click="showPopOver()"></button>
+        <button class="button button-icon button-clear ion-ios-book-outline" ng-if="appMode != enums.appModes.read" ng-click="readMode()"></button>
+        <div class="bar-popover" ng-if="popoverShowen">
+            <div class="list">
+                <a class="item  item-icon-right" ng-click="toggleTestMemorizeMode();clickOnPopOverItem()">
+                    <i class="icon" ng-class=" {'ion-ios-color-wand-outline':isTestMemorizeMode != true,'ion-ios-color-wand': isTestMemorizeMode == true} "></i>
+                    التسميع
+                </a>
+                <a ng-if="appMode != enums.appModes.review" class="item  item-icon-right" ng-click="showMemorizePageChecklist();clickOnPopOverItem()">
+                    <i class="icon ion-ios-list-outline"></i>
+                    حفظ الآيات
+                </a>
+                <a ng-if="appMode == enums.appModes.review" class="item  item-icon-right" ng-click="showReviewChecklist();clickOnPopOverItem()">
+                    <i class="icon ion-ios-list-outline"></i>
+                    مراجعة الآيات
+                </a>
+
+
+                <a class="item  item-icon-right" ui-sref="app.bookmarks">
+                    <i class="icon ion-ios-bookmarks-outline"></i>
+                    العلامات المرجعية
+                </a>
+                <a class="item  item-icon-right" ng-click="switchNotesMode();clickOnPopOverItem()">
+                    <i class="icon" ng-class=" {'ion-ios-compose-outline':isNotesModeEnabled != true,'ion-ios-compose': isNotesModeEnabled == true}"></i>
+                    خواطر الصفحة
+                </a>
+                <a class="item  item-icon-right" ui-sref="app.settings">
+                    <i class="icon ion-ios-gear-outline"></i>
+                    الإعدادات
+                </a>
+
+            </div>
+        </div>
+        <button ng-if="isNotesModeEnabled == true" class="button button-icon button-clear " ng-class=" {'ion-ios-compose-outline':isNotesModeEnabled != true,'ion-ios-compose': isNotesModeEnabled == true} " ng-click="switchNotesMode()"></button>
+        <button ng-if="isTestMemorizeMode==true" class="button button-icon button-clear " ng-class=" {'ion-ios-color-wand-outline':isTestMemorizeMode != true,'ion-ios-color-wand': isTestMemorizeMode == true} " ng-click="toggleTestMemorizeMode()"></button>
+    </ion-nav-buttons>-->
+    <div id="preloadfont"></div>
+
+
+    <ion-content class="quran-page " ng-class="{'mushaf':!hideBar &&curPage.pageNum<3 ,'qalon-moshaf': MoshafId==enums.mosahfCopy.qalon.id}" delegate-handle="mainScroll">
+
+        <ion-slide-box ng-if="slides.length>0" style="height:100%; "
+                       on-slide-changed="slideChanged($index)"
+                       active-slide="selectedSlide"
+                       does-continue="true"
+                       show-pager="false"
+                       disable-scroll="false"
+                       enable-slide-left="enableSlideLeft"
+                       enable-slide-right="enableSlideRight">
+
+            <ion-slide on-drag-right="dragRight(slide,$event)"
+                       on-drag-left="dragLeft(slide,$event)"
+                       ng-repeat="slide in slides"
+                       ng-class="{curSlide:slide.page.pageNum==curPage.pageNum,'page1':slide.page.pageNum%2 >0 &&!hideBar,'page2': slide.page.pageNum%2  == 0 &&!hideBar}"
+                       curpage="curPage.pageNum"
+                       slide="slide"
+                       iszoomed="isZoomed"
+                       page="{{slide.page.pageNum}}" style="top:1px;">
+
+                <div class=" soura-head">
+                    <span> {{slide.page.firstSurah.JuzName}}</span>
+                    <span>{{slide.page.firstSurah.Name}}</span>
+                </div>
+                <div class="soura-body soura-img">
+
+                    <div style="{{zoomingFontSize>0?'font-size:'+zoomingFontSize+'px':''}}" class="content " ng-class=" {'img-cont':!hideBar,'no-padding':slide.page.pageNum<3} ">
+                        <!--<div class="pagination">
+                            <small class="badge badge-stable"> سورة {{curPage.surah}}</small><small class="badge badge-stable">  {{getArabicNumber(slide.page.pageNum)}} </small><small class="badge badge-stable">  {{curPage.juz}}</small>
+                        </div>-->
+                        <div ng-click="goToLastBookmark()" ng-if="lastBookmark !=null && !hideMark&&hideCancelMem" class="ribbon color-{{lastBookmark.color}}" >
+                            <a>
+                                <i><span>{{lastBookmark.title}}</span></i>
+                            </a>
+                        </div>
+                        <div>
+                            <!--<p ng-show="surah.ayat[0].ayahNum == 1" ng-if="surah.Id != 1 && surah.Id != 9" class="text-center bsm-allah">بسم الله الرحمن الرحيم</p>-->
+
+
+                            <div class="svg-wrapper">
+                                <svg ng-if="curPage.pageNum==slide.page.pageNum" version="1.1" xmlns="http://www.w3.org/2000/svg" class="quran-svg" ng-class="{'hidden-ayat':isTestMemorizeMode}">
+                                    <g ng-repeat="surah in slide.page.surahs">
+                                        <g ng-repeat="aya in surah.ayat | orderBy :'ayahNum'">
+
+                                            <polygon id="aya{{aya.id}}"
+                                                     ng-class="{selectedAya: (aya.id==currentAya.id && MoshafId!=enums.mosahfCopy.qalon.id )||(aya.id!=currentAya.id && MoshafId==enums.mosahfCopy.qalon.id&&currentAya.id ),werd:aya.isWerd==true&&appMode != enums.appModes.read,late:(aya.isLate==true &&aya.isChecked!=true&&appMode == enums.appModes.memorize)||(appMode == enums.appModes.review && aya.id<firstReviewAyaTask &&isInReviewTarget(aya.id)),doneAya:(aya.isChecked==true &&appMode != enums.appModes.review&&(appMode == enums.appModes.memorize || settings.markMemorizedAyat ==true)) || ((appMode == enums.appModes.review && isInReviewTarget(aya.id) && aya.id>firstReviewAyaTask && aya.isWerd!=true)),reviewed:(aya.isReviewed==true && appMode == enums.appModes.review ),hasNote:aya.hasNote==true&&isNotesModeEnabled==true,'aya-block':isTestMemorizeMode && hideFrom<=aya.id ,'noFill':isTestMemorizeMode}" on-hold="selectAya(aya, true)" on-release="releaseAya()" on-touch-start="releaseAya()" points="{{getAyaCoords($parent.$index,$index,aya,$index>0?surah.ayat[$index-1]:0,slide.page.pageNum,surah.StartTop)}}" ng-click="toggleBars($event,aya);" ng-dblclick="dbClick()"></polygon>
+                                            <!--<rect  x="{{aya.numPoints.x}}" y="{{aya.numPoints.y}}" class="aya-num" ng-class="{'svg-hidden':hideFrom>aya.id}" width="{{aya.numPoints.width}}" height="{{aya.numPoints.height}}"></rect>-->
+                                            <text transform="matrix(1 0 0 1 {{aya.numPoints.x+aya.numPoints.width/2}} {{aya.numPoints.y+aya.numPoints.height/2}})" ng-class="{'svg-hidden':hideFrom>aya.id}" class="aya-num-txt">{{getArabicNumber(aya.ayahNum)}}</text>
+                                        </g>
+                                        <g ng-if="$last" ng-show="cutting">
+
+                                            <polygon ng-repeat="aya in surah.ayat | orderBy :'ayahNum'" id="aya{{aya.id+1}}" ng-if="$last"
+                                                     ng-class="{selectedAya: nextSlide.page.surahs[0].ayat[0].id==currentAya.id,werd:nextSlide.page.surahs[0].ayat[0].isWerd==true&&appMode != enums.appModes.read,late:(nextSlide.page.surahs[0].ayat[0].isLate==true &&nextSlide.page.surahs[0].ayat[0].isChecked!=true&&appMode == enums.appModes.memorize)||(appMode == enums.appModes.review && nextSlide.page.surahs[0].ayat[0].id<firstReviewAyaTask &&isInReviewTarget(nextSlide.page.surahs[0].ayat[0].id)),doneAya:(nextSlide.page.surahs[0].ayat[0].isChecked==true &&appMode != enums.appModes.review&&(appMode == enums.appModes.memorize || settings.markMemorizedAyat ==true)) || ((appMode == enums.appModes.review && isInReviewTarget(nextSlide.page.surahs[0].ayat[0].id) && nextSlide.page.surahs[0].ayat[0].id>firstReviewAyaTask && nextSlide.page.surahs[0].ayat[0].isWerd!=true)),reviewed:(nextSlide.page.surahs[0].ayat[0].isReviewed==true && appMode == enums.appModes.review ),hasNote:nextSlide.page.surahs[0].ayat[0].hasNote==true&&isNotesModeEnabled==true,'aya-block':isTestMemorizeMode && hideFrom<=nextSlide.page.surahs[0].ayat[0].id ,'noFill':isTestMemorizeMode}"
+                                                     on-hold="selectAya(nextSlide.page.surahs[0].ayat[0], true)" on-release="releaseAya()" on-touch-start=" releaseAya()" points="{{getLastAyaCoords($parent.$index,$index,aya,$index>0?surah.ayat[$index-1]:0,slide.page.pageNum,surah.StartTop,slide.page)}}" ng-click="toggleBars($event,aya);" ng-dblclick="dbClick()"></polygon>
+
+                                            <text transform="matrix(1 0 0 1 {{numPoints.x+numPoints.width/2}} {{numPoints.y+numPoints.height/2}})" ng-class="{'svg-hidden':hideFrom>aya.id}" class="aya-num-txt">{{getArabicNumber(aya.ayahNum)}}</text>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <img ng-src="{{slide.page.path}}" class="full-image" id="page{{slide.page.pageNum}}" />
+                                <!--<div  class="full-image" id="page{{slide.page.pageNum}}"  style=" background-image: url({{slide.page.path}}); background-repeat: no-repeat; background-size: cover;height:500px "></div>-->
+                                <!--<img ng-src="{{path}}" class="full-image" />-->
+                                <!--<img ng-src="{{path2}}" class="full-image" />-->
+
+                            </div>
+                            <!--</div>-->
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="soura-foot">
+                    <span>{{getArabicNumber(slide.page.pageNum)}}</span>
+                </div>
+            </ion-slide>
+
+        </ion-slide-box>
+
+
+
+    </ion-content>
+    <!--<div ng-hide="hideBar || inAudioMode" ng-class="" class="tabs tabs-energized tabs-icon-top footer-tabs ">
+
+        <a class="tab-item" ng-click="showMemorizePageChecklist()">
+            <i class="icon ion-ios-list-outline"></i>
+            قائمة الحفظ
+        </a>
+        <a class="tab-item" ng-click="switchNotesMode()" ng-class="{'active':isNotesModeEnabled}">
+            <i class="icon ion-ios-compose-outline"></i>
+            الخواطر
+        </a>
+    </div>-->
+    <div id="canvasBody" style="height:0px">
+        <canvas id="canvas" style="padding-left: 10px; padding-right: 0; margin-left: auto; margin-right: auto; display: none; width: 100%; height :100%;"></canvas>
+    </div>
+
+    <!--<div ng-hide="hideBar" class="bar bar-footer bar-positive">
+        <small class="badge badge-stable"> سورة {{curPage.surah}}</small>
+        <small class="badge badge-stable">  {{getArabicNumber(curPage.pageNum )}}  </small>
+        <small class="badge badge-stable">  {{curPage.juz}}</small>
+
+    </div>-->
+
+</ion-view>
+
+
+

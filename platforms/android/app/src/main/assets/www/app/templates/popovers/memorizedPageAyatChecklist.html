@@ -1,0 +1,39 @@
+﻿<ion-modal-view>
+                
+                
+
+    <div class="popup-head">
+        <h3 class="popup-title">قائمة الحفظ</h3><h5 class="popup-sub-title"> حدد الآيات المحفوظة بالصفحة الحالية</h5>
+    </div>
+    <div class="padding-horizontal padding-top dir-rtl">
+        <ion-list>
+            <ion-checkbox class="checkAll" ng-model="pageChecklist.allAyatChecked" ng-click="toggleAllAyatCheck()"> اختر الكل</ion-checkbox>
+        </ion-list>
+    </div>
+    <ion-content class="padding-horizontal has-footer has-expanded-header" >
+
+        <!--<ion-scroll>-->
+            <ion-list>
+
+
+                <ion-checkbox ng-repeat="aya in pageChecklist.ayat"
+                              ng-model="aya.isMemorized"
+                              ng-change="checkAya()" ng-class="{'task-done': aya.isMemorized,UthmanicHafs: MoshafId==enums.mosahfCopy.hafs.id,UthmanicQaloon: MoshafId==enums.mosahfCopy.qalon.id,UthmanicWarsh: MoshafId==enums.mosahfCopy.warsh.id}"><p class=" aya">{{ aya.verse }}</p></ion-checkbox>
+
+
+
+            </ion-list>
+        <!--</ion-scroll>-->
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="saveMemorizedAyat()">حفظ</button>
+            <button class="button button-positive button-outline" ng-click="closMemorizePageChecklist()">إلغاء</button>
+        </a>
+    </div>
+
+
+
+
+            </ion-modal-view>

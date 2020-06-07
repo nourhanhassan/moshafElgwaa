@@ -1,0 +1,39 @@
+﻿<ion-modal-view>
+                
+                
+
+    <div class="popup-head">
+        <h3 class="popup-title">قائمة المراجعة</h3><h5 class="popup-sub-title"> حدد الآيات المُراجعة بالصفحة الحالية</h5>
+    </div>
+    <div class="padding-horizontal padding-top dir-rtl">
+        <ion-list>
+            <ion-checkbox class="checkAll" ng-model="reviewPageChecklist.allAyatChecked" ng-click="toggleReviewAllAyatCheck()"> اختر الكل</ion-checkbox>
+        </ion-list>
+    </div>
+    <ion-content class="padding-horizontal has-footer has-expanded-header" >
+
+        <!--<ion-scroll>-->
+            <ion-list>
+
+
+                <ion-checkbox ng-repeat="aya in reviewPageChecklist.ayat"
+                              ng-model="aya.isChecked"
+                              ng-change="reviewCheckAya()" ng-class="{'task-done': aya.isChecked ,'disabled':!isInReviewTarget(aya.id)}"><p class="aya">{{ aya.verse }}</p></ion-checkbox>
+
+
+
+            </ion-list>
+        <!--</ion-scroll>-->
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="saveReviewedAyat()">حفظ</button>
+            <button class="button button-positive button-outline" ng-click="closeReviewPageChecklist()">إلغاء</button>
+        </a>
+    </div>
+
+
+
+
+            </ion-modal-view>

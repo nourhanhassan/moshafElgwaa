@@ -1,0 +1,16 @@
+<ion-view  view-title="الأجزاء" ng-controller="partsController">
+    <ion-content class="padding-vertical">
+        <ion-list class="list-default">
+            <ion-item ng-repeat="part in parts" class="item" ng-click="goToPage(part.StartPage)">
+                <a>
+                    <span class="list-number-name">{{part.Name}}  </span>
+                    <small class="badge badge-stable">صفحة : {{getArabicNumber(part.StartPage)}}</small>
+                </a>
+                <!--<div id="progress-bar-container" ng-if="part.juzProgress>0">
+                    <div class="progress-bar-child memo-progress"></div>
+                    <div class="progress-bar-child shrinker timelapse" ng-style="{width:100-part.juzProgress + '%'}"></div>
+                </div>-->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

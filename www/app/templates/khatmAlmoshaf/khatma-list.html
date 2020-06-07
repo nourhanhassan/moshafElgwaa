@@ -1,0 +1,25 @@
+﻿<ion-view view-title="الختمة" ng-controller="KhatmaListController">
+    <ion-content class="padding has-progress">
+        <ion-list class="list-memo" >
+            <ion-item class="item-accordion repeated-item" ng-repeat="target in targets" ui-sref="set-khatma-details({ID:target.id})" ng-hide="target.KatmaFinished==1">
+                <a>{{target.title}}</a>
+                <p><small></small></p>
+                <!--<div id="progress-bar-container">
+                <div class="progress-bar-child memo-progress"></div>
+                <div class="progress-bar-child shrinker timelapse"></div>
+            </div>-->
+                <i class="icon ion-chevron-left icon-accessory"></i>
+            </ion-item>
+
+
+
+
+            <label class="item-accordion repeated-item no-data" ng-show="!targets.length">
+                <span class="input-label"> <i class="ion-android-locate"></i> لا يوجد ختمات  </span>
+            </label>
+        </ion-list>
+
+    </ion-content>
+    <a ui-sref="set-khatma-duration({})" class="button button-block button-positive fab-button"> <i class="icon ion-plus"></i></a>
+</ion-view>
+

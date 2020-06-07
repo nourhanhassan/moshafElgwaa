@@ -1,0 +1,58 @@
+﻿
+<!--<ion-view title="تفعيل الحساب" ng-controller="VerificationCodeController" >
+    <ion-content id="register-form">
+        <div class="container">
+
+            <div class="list">
+                <form name="verifyCodeForm" ng-submit="verifyCode()" >
+                    <label class="item item-input item-floating-label">
+                      
+                    <span class="input-label">الكود المرسل بالبريد</span>
+                    <input name="Code" type="tel" placeholder="إدخل الكود" ng-model="userInfo.Code" ng-pattern="validations.CodeNumber.pattern" ng-required="true" >
+                      <span style="color: red" ng-show="verifyCodeForm.Code.$invalid && !verifyCodeForm.Code.$pristine">
+                         <span ng-show="verifyCodeForm.Code.$error.required && !verifyCodeForm.Code.$pristine " class="error-validation">حقل الزامي</span>
+                        <span ng-show="verifyCodeForm.Code.$error.pattern && !verifyCodeForm.Code.$pristine " class="error-validation">{{validations.CodeNumber.msg}}</span>
+                         </span>
+
+                </label>
+
+                
+
+  <div class="padding">
+             <button type="submit" class="button button-block button-positive" ng-disabled="verifyCodeForm.$invalid "> حفظ  </button>      
+                   <button type="button" class="button button-block button-positive" ng-click="backState()" > تعديل بياناتى  </button>      
+
+            </div>
+                </form>
+            </div>
+          
+        </div>
+    </ion-content>
+</ion-view>-->
+
+<ion-view view-title="تفعيل الحساب" class="main-bg"  ng-controller="VerificationCodeController">
+  <ion-content class="memorize-form has-progress" id="register-form">
+        <form name="verifyCodeForm" ng-submit="verifyCode()" >
+    <div class="card">
+      
+      <div class="list">
+        <label class="item item-input item-stacked-label"> <span class="input-label">الكود المرسل بالبريد</span>
+            <input name="Code" type="tel" placeholder="إدخل الكود" ng-model="userInfo.Code" ng-pattern="validations.CodeNumber.pattern" ng-required="true" >                   
+        </label>
+         <span style="color: red" ng-show="verifyCodeForm.Code.$invalid && !verifyCodeForm.Code.$pristine">
+            <span ng-show="verifyCodeForm.Code.$error.required && !verifyCodeForm.Code.$pristine " class="error-validation">حقل الزامي</span>
+        <span ng-show="verifyCodeForm.Code.$error.pattern && !verifyCodeForm.Code.$pristine " class="error-validation">{{validations.CodeNumber.msg}}</span>
+            </span>
+      </div>
+        <!-- <a href="#" class="button button-positive button-block"> حفظ </a>
+         <a href="#" class="button button-positive button-block"> رجوع لتعديل البيانات </a>-->
+
+        <div class="text-left">
+            <button type="button" class="button icon-right button-positive ion-chevron-right" ng-click="backState()" > رجوع   </button>  <button type="submit" class="button button-positive" ng-disabled="verifyCodeForm.$invalid "> حفظ  </button> 
+        </div>
+             
+
+    </div>
+        </form>
+  </ion-content>
+</ion-view>

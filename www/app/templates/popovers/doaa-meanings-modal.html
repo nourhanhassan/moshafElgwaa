@@ -1,0 +1,9 @@
+﻿<ion-modal-view>
+    <div class="popup-head">
+        <h3 class="popup-title">حاشية ادعية الفصل</h3><h5 class="popup-sub-title"> حاشية   {{currentDoaa.Name}}</h5>
+    </div>
+    <ion-content class="padding-horizontal has-footer has-expanded-header">
+        <p compile="currentDoaa.DoaaMeanings"></p>
+    </ion-content>
+    <button class="button button-clear button-close-modal" ng-click="closeDoaaMeaningsModal()"><i class="icon ion-close"></i></button>
+</ion-modal-view>

@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" /> 
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src ; style-src 'self' http:// 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />-->
+    <meta http-equiv="Content-Security-Policy" content=" default-src * data: blob: ws: wss: gap://ready file://*; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * ws: wss:;">
+     <!-- <meta http-equiv="Content-Security-Policy" content="default-src * blob;object-src 'self' blob; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' ; style-src 'self' 'unsafe-inline' *">-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!--<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <title></title>
+    <link rel="manifest" href="manifest.json">
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/ionic-timepicker.styles.css" rel="stylesheet" />
+
+
+    <link href="css/animate.css" rel="stylesheet" />
+
+    <link href="css/custom-style.css" rel="stylesheet" />
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/toaster.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.doaa.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+    <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
+    <script src="lib/ionic-timepicker.bundle.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="lib/jquery.js"></script>
+    <script src="js/toaster.min.js"></script>
+    <script src="js/jquery.ns-autogrow.js"></script>
+    <script src="js/CanvasText-0.4.1.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="https://github.com/oblador/angular-scroll/blob/master/angular-scroll.min.js"></script>
+    
+    <!-- app's js -->
+    <script src="app/app.js"></script>
+    <script src="js/data/Moshaf-db.js"></script>
+    <script src="js/data/Moshaf-dbShamr.js"></script>
+    <script src="js/data/Moshaf-dbKalon.js"></script>
+    <script src="js/data/Moshaf-dbWarsh.js"></script>
+    <script src="app/services/app-services/moshaf-data.js"></script>
+    <!--Dirctives Javascript files -->
+    <script src="app/directives/menu-close-qv.js"></script>
+    <script src="app/directives/compare-to.js"></script>
+    <script src="app/directives/week-days.js"></script>
+    <script src="app/directives/compile-html.js"></script>
+    <script src="app/directives/search-doaabook-directive.js"></script>
+    <!--<script src="app/directives/long-press.js"></script>-->
+    <!--<script src="app/directives/fit-text.js"></script>-->
+    <!--<script src="js/gestures.min.js"></script>
+    <script src="js/angular-touch.min.js"></script>-->
+    <script src="app/directives/calender-hejri-qv.js"></script>
+     <!--       <script src="app/directives/steps-indicator.js"></script>-->
+    <!-- lib services -->
+    <script src="lib/ionic.ion.imagecachefactory.js"></script>
+    <script src="app/services/lib-services/network.js"></script>
+    <script src="app/services/lib-services/http-handler.js"></script>
+    <script src="app/services/lib-services/local-storage.js"></script>
+    <script src="app/services/lib-services/ng-Fit-text.js"></script>
+    <script src="app/services/lib-services/device.js"></script>
+    <script src="app/services/lib-services/social-sharing.js"></script>
+    <script src="app/services/lib-services/ionic-popup.js"></script>
+    <script src="app/services/lib-services/ionic-loading.js"></script>
+    <script src="app/services/lib-services/local-notification.js"></script>
+    <script src="app/services/lib-services/contacts.js"></script>
+    <!--<script src="app/services/lib-services/notification-manager.js"></script>-->
+    <script src="app/services/lib-services/push-notifications.js"></script>
+    <script src="app/services/lib-services/guid.js"></script>
+    <script src="app/services/lib-services/ionic-loading.js"></script>
+    <script src="app/services/lib-services/file.js"></script>
+    <script src="app/services/lib-services/file-transfer.js"></script>
+    <script src="app/services/lib-services/network.js"></script>
+    <script src="lib/ionic/js/angular-sanitize.js"></script>
+    <script src="app/services/lib-services/toast.js"></script>
+    <script src="app/services/lib-services/permissions.js"></script>
+    <script src="app/services/lib-services/hammer.js"></script>
+    <!-- app services -->
+    <script src="app/services/app-services/createAppFolder.js"></script>
+    <script src="app/services/app-services/audio.js"></script>
+    <script src="app/services/app-services/enums.js"></script>
+    <script src="app/services/app-services/target.js"></script>
+    <script src="app/services/app-services/ayat-data.js"></script>    <!-- Layouts -->
+    <script src="app/services/app-services/memorize.js"></script>
+    <script src="app/services/app-services/group.js"></script>
+    <script src="app/services/app-services/group-add.js"></script>
+    <script src="app/services/app-services/user.js"></script>
+    <script src="app/services/app-services/memorized-ayat.js"></script>
+    <script src="app/services/app-services/mark.js"></script>
+    <script src="app/services/app-services/download-soar-image.js"></script>
+    <script src="app/services/app-services/notes.js"></script>
+    <script src="app/services/app-services/bookmarkType.js"></script>
+    <script src="app/services/app-services/bookmark.js"></script>
+    <script src="app/services/app-services/backup.js"></script>
+    <script src="app/services/app-services/recitations.js"></script>
+    <script src="app/services/app-services/settings.js"></script>
+    <script src="app/services/app-services/ayat-Tafseer.js"></script>
+    <script src="app/services/app-services/reviewTarget.js"></script>
+    <script src="app/services/app-services/validations.js"></script>
+    <script src="app/services/app-services/review.js"></script>
+    <script src="app/services/app-services/khatma.js"></script>
+    <script src="app/services/app-services/alarm.js"></script>
+    <script src="app/services/app-services/alarm-notification.js"></script>
+    <script src="app/services/app-services/doaa.js"></script>
+    <script src="app/services/app-services/names-of-allah.js"></script>
+    <script src="app/services/app-services/article.js"></script>
+    <script src="app/services/app-services/doaa-book-bookmark.js"></script>
+    <script src="app/services/app-services/doaaBookmarkType.js"></script>
+    <script src="app/services/app-services/doaa-book.js"></script>
+    <script src="app/services/app-services/search.js"></script>
+    <script src="app/services/app-services/memorizedArticles.js"></script>
+    <script src="app/services/app-services/memorizeDoaaBook.js"></script>
+    <script src="app/services/app-services/alarm-storage.js"></script>
+    <!-- search directive -->
+    <script src="app/directives/search-directive.js"></script>
+
+
+    <!-- Templates -->
+    <script src="app/layouts/side-menu-ctrl.js"></script>
+    <script src="app/layouts/header-ctrl.js"></script>
+    <script src="app/layouts/memo-tab-ctrl.js"></script>
+
+    <script src="app/templates/quran/page-ctrl.js"></script>
+    <script src="app/templates/home/home-ctrl.js"></script>
+    <script src="app/templates/target/set-target-details-ctrl.js"></script>
+    <script src="app/templates/target/set-target-duration-ctrl.js"></script>
+    <script src="app/templates/target/target-list-ctrl.js"></script>
+
+    <script src="app/templates/memorize/memorize-ctrl.js"></script>
+    <script src="app/templates/group/group-ctrl.js"></script>
+    <script src="app/templates/group/group-add-ctrl.js"></script>
+    <script src="app/templates/group-details/group-details-ctrl.js"></script>
+    <script src="app/templates/user/register-ctrl.js"></script>
+    <script src="app/templates/user/verify-code-ctrl.js"></script>
+    <script src="app/templates/group/group-members-add-ctrl.js"></script>
+    <script src="app/templates/group/group-manage-ctrl.js"></script>
+    <script src="app/templates/doaa-book/article/article-ctrl.js"></script>
+    <script src="app/templates/doaa-book/doaa/doaa-ctrl.js"></script>
+    <script src="app/templates/doaa-book/index/index-ctrl.js"></script>
+    <script src="app/templates/doaa-book/namesofallah/namesofallah-ctrl.js"></script>
+    <script src="app/templates/group-details/group-progress-ctrl.js"></script>
+    <!-- search -->
+    <script src="app/templates/search/searchResult-ctrl.js"></script>
+    <!-- parts controller  -->
+    <script src="app/templates/parts/partsList-ctr.js"></script>
+    <!-- surahs controller  -->
+    <script src="app/templates/surahs/surahList-ctrl.js"></script>
+    <!-- pages controller  -->
+    <script src="app/templates/pages/pages-ctr.js"></script>
+    <!-- marks controller  -->
+    <script src="app/templates/marks/marksList-ctr.js"></script>
+    <script src="app/templates/aboutApp/about-ctrl.js"></script>
+    <script src="app/templates/notes/notesList-ctr.js"></script>
+    <script src="app/templates/favs/favList-ctr.js"></script>
+    <script src="app/templates/memorize/memorized-ctrl.js"></script>
+    <script src="app/templates/memorize/un-memorized-ctrl.js"></script>
+    <script src="app/templates/Backup/register-ctrl.js"></script>
+    <script src="app/templates/Backup/login-ctrl.js"></script>
+    <script src="app/templates/Backup/backup-ctrl.js"></script>
+    <script src="app/templates/settings/settings-ctrl.js"></script>
+    <script src="app/templates/reviewTarget/review-target-list-ctrl.js"></script>
+    <script src="app/templates/reviewTarget/set-review-target-details-ctrl.js"></script>
+    <script src="app/templates/reviewTarget/set-review-target-duration-ctrl.js"></script>
+    <script src="app/templates/testTajweed/test-ctrl.js"></script>
+    <script src="app/templates/doaa/doaa-ctrl.js"></script>
+    <script src="app/templates/khatmAlmoshaf/khatma-list-ctrl.js"></script>
+    <script src="app/templates/khatmAlmoshaf/set-khatma-details-ctrl.js"></script>
+    <script src="app/templates/khatmAlmoshaf/set-khatma-duration-ctrl.js"></script>
+    <script src="app/templates/archive/archive-ctrl.js"></script>
+    <script src="app/layouts/tabs-ctrl.js"></script>
+    <script src="app/templates/quranText/quranText-ctrl.js"></script>
+    <script src="app/templates/dashboard/dashboard-ctrl.js"></script>
+    <script src="app/templates/quran2/page2-ctrl.js"></script>
+    <script src="app/templates/memorize/memorize-home-ctrl.js"></script>
+    <script src="app/templates/alarm/alarm-ctrl.js"></script>
+    <script src="app/templates/alarm/alarm-list-ctrl.js"></script>
+    <script src="app/templates/moshafCopy/moshafCopy-ctrl.js"></script>
+    <script src="app/templates/copy-surahs/copy-surahs-ctrl.js"></script>
+    <script src="app/templates/surah-pages/surah-pages-ctrl.js"></script>
+    <script src="app/templates/remove-telawa/remove-telawa-ctrl.js"></script>
+    <script src="app/templates/telawa-surahs/telawa-surahs-ctrl.js"></script>
+    <script src="app/templates/surah-audios/surah-audios-ctrl.js"></script>
+    <script src="app/templates/download/download-ctrl.js"></script>
+    <script src="app/templates/ControlPanel/ControlPanel-ctrl.js"></script>
+    <script src="app/templates/searchDoaaBook/searchDoaaBookResult-ctrl.js"></script>
+    <script src="app/templates/doaa-bookmarks/doaa-bookmarks-ctrl.js"></script>
+    <script src="app/templates/archiveDoaaBook/archiveDoaaBook-ctrl.js"></script>
+    <script src="app/templates/favs/article-favList-ctrl.js"></script>
+    <script src="app/layouts/main-ctrl.js"></script>
+    <script src="app/templates/download-telawas/downloadTelawas-ctrl.js"></script>
+    <script src="app/templates/doaa-book/article/article-list-ctrl.js"></script>
+    <script src="app/templates/doaa-book/doaa/doaa-list-ctrl.js"></script>
+    <script src="app/templates/update/update-ctrl.js"></script>
+    <!-- end heaaaaaaaaaaaad -->
+</head>
+
+
+<body ng-app="moshafk" ng-class="nightMode ? 'deluminate' : ''" ng-controller="MainController">
+    <toaster-container toaster-options="{'position-class': 'toast-bottom-left','time-out': 2000}"></toaster-container>
+    <button class="button button-icon button-hide" ng-hide="hideCancelMem" ng-click="showNavBar()"> x</button>
+    <ion-nav-bar class="bar-stable" align-title="right" ng-controller="headerController">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-color-wand-outline" ng-click="toggleTestMemorizeMode();" ng-hide="hideMem"></button>
+            <button class="button button-icon button-clear ion-ios-list-outline" ui-sref="archive" ></button>
+            <button class="button button-icon button-clear ion-ios-search" ng-click="search()" ></button>
+            <!--<button class="button button-icon button-clear ion-ios-bell"></button>-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-bar class="bar-positive" align-title="right" ng-if="activePage === 'doaas'">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-settings" ng-click="openDoaaSetting()"></button>
+            <button class="button button-icon button-clear ion-ios-list-outline" ui-sref="archiveDoaaBook"></button>
+            <button class="button button-icon button-clear ion-ios-search" ng-click="searchInDoaaBook()"></button>
+            <!--<button class="button button-icon button-clear ion-ios-bell"></button>-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-bar class="bar-energized" align-title="right" ng-if="activePage === 'article'">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-ios-settings" ng-click="openDoaaSetting()"></button>
+            <button class="button button-icon button-clear ion-ios-list-outline" ui-sref="archiveDoaaBook"></button>
+            <button class="button button-icon button-clear ion-ios-search" ng-click="searchInDoaaBook()"></button>
+
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view>
+    </ion-nav-view>
+    <style>
+        @font-face {
+            font-family: 'UthmanicHafs1 Ver12';
+            src: url('fonts/UthmanicHafs1 Ver12.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'UthmanicQaloon1 Ver05';
+            src: url('fonts/UthmanicQaloon1 Ver05.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'UthmanicWarsh1 Ver05';
+            src: url('fonts/UthmanicWarsh1 Ver05.otf') format('opentype');
+        }
+
+        .UthmanicHafs {
+            font-family: 'UthmanicHafs1 Ver12';
+        }
+
+        .UthmanicQaloon {
+            font-family: 'UthmanicQaloon1 Ver05';
+        }
+
+        .UthmanicWarsh {
+            font-family: 'UthmanicWarsh1 Ver05';
+        }
+    </style>
+</body>
+
+</html>

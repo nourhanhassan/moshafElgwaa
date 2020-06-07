@@ -1,0 +1,54 @@
+﻿
+<ion-view view-title="المحفوظ / غير المحفوظ" ng-controller="memorizedController">
+    
+        <ion-tabs class="tabs-color-active-positive tabs-top">
+            <a class="tab-item active" href="#/memorized">
+                المحفوظ
+            </a>
+            <a class="tab-item" ui-sref="un-memorized">
+                غير المحفوظ
+            </a>
+
+        </ion-tabs>
+   
+
+
+    <ion-content class="has-subheader">
+
+        <ion-list class="list-default">
+            <ion-item class="item" ng-if="viewMemorizedList.length==0">
+                <a>
+                    <span class="list-number-name">  لا يوجد آيات محفوظة   </span>
+
+
+                </a>
+            </ion-item>
+
+            <ion-item class="item" ng-repeat="surah in viewMemorizedList">
+                <a ng-click="goToPage(surah.memorizedayat[0].id)">
+                    <span class="list-number-name"> {{surah.Name}} <i ng-if="surah.isCompleted ">(كاملة)</i> </span>
+                    <small ng-if="surah.memorizedayat.length>1" class="badge badge-stable  badge-balanced">من آية {{getArabicNumber(surah.memorizedayat[0].ayahNum)}} إلى آية {{getArabicNumber(surah.memorizedayat[surah.memorizedayat.length-1].ayahNum)}}</small>
+                    <small ng-if="surah.memorizedayat.length==1" class="badge badge-stable  badge-balanced">آية {{getArabicNumber(surah.memorizedayat[0].ayahNum)}} </small>
+
+                </a>
+            </ion-item>
+
+
+        </ion-list>
+
+        <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+
+</ion-view>

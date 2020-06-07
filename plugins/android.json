@@ -1,0 +1,107 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-app-event": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-apprate": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-fullscreen": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-insomnia": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-local-notification": {
+      "ANDROID_SUPPORT_V4_VERSION": "26.+",
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-navigationbar": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "phonegap-plugin-push": {
+      "ANDROID_SUPPORT_V13_VERSION": "27.+",
+      "FCM_VERSION": "17.0.+",
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "skwas-cordova-plugin-datetimepicker": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-background-download": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "cordova-support-google-services": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    },
+    "phonegap-plugin-multidex": {
+      "PACKAGE_NAME": "com.qvsite.MoshafThird"
+    }
+  }
+}

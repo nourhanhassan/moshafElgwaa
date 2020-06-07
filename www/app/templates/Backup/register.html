@@ -1,0 +1,46 @@
+﻿
+<ion-view view-title="النسخ الإحتياطي" ng-controller="registerController">
+
+    <ion-content>
+        <form name="register">
+            <div class="list">
+                <label ng-class="{'un-valid':register.email.$error.pattern}" class="item item-input item-stacked-label">
+                    <span class="input-label">البريد الإلكتروني</span>
+                    <i class="ion-alert-circled" style="color: red;float: left;" ng-show="register.email.$error.pattern"></i>
+
+                    <input ng-model="registerData.email" type="text" name="email" ng-pattern="enums.validations.email.pattern" placeholder="ضع بريدك الإلكتروني">
+                </label>
+                <label ng-class="{'un-valid':registerData.isNameExist ||register.name.$error.pattern }" class="item item-input item-stacked-label">
+                    <span style="color:red" ng-show="register.name.$error.required">*</span>
+                    <span class="input-label">اسم المستخدم</span>
+                    <i class="ion-alert-circled" style="color: red;float: left;" ng-show="registerData.isNameExist ||register.name.$error.pattern"></i>
+                    <input ng-model="registerData.name" required name="name" type="text" placeholder="اسم المستخدم" ng-pattern="enums.validations.stringMixed50.pattern">
+                    <span style="color:red" ng-show="registerData.isNameExist">هذا الاسم مستخدم من قبل </span>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span style="color:red" ng-show="register.password.$error.required">*</span>
+                    <span class="input-label">كلمة المرور</span>
+                    <input ng-model="registerData.password" required name="password" type="password" placeholder="كلمة المرور">
+                </label>
+                <label  class="item item-input item-stacked-label" ng-class="{'un-valid':register.confirmPassword.$error.compareTo}">
+                    <span style="color:red" ng-show="register.confirmPassword.$error.required">*</span>
+                    <span class="input-label"> تأكيد كلمة المرور </span>
+                    <i class="ion-alert-circled" style="color: red;float: left;" ng-show="register.confirmPassword.$error.compareTo"></i>
+
+                    <input compare-to="registerData.password" ng-model="registerData.confirmPassword" required name="confirmPassword" type="password" placeholder="كلمة المرور">
+                </label>
+                <div class="padding text-center">
+                    <div class="button-bar">
+                        <button ng-disabled="register.email.$invalid || register.name.$invalid || register.password.$invalid || register.confirmPassword.$invalid" ng-click="registerUser()" class="button button-positive icon-right "><i class="icon ion-ios-cloud-upload-outline"></i> تأكيد </button>
+                        <button ng-click="cancel()" class="button button-positive button-outline icon-right"><i class="icon "></i> إلغاء </button>
+                    </div>
+                    <a href="#/app/login" class="button button-small" > لديك حساب بالفعل؟</a>
+
+                </div>
+            </div>
+
+            </form>
+</ion-content>
+
+
+</ion-view>

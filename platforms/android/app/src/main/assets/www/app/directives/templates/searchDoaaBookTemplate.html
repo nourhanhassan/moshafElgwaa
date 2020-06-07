@@ -1,0 +1,52 @@
+﻿<div class="bar bar-subheader item-input-inset bar-royal" id="divSearch">
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <!--<input type="search" placeholder="بحث" ng-model="searchKey" required name="searchKey">-->
+        <input type="search" placeholder="ضع كلمات بحثك هنا" ng-model="searchKey" required name="searchKey" class="searchBox" ng-keyup="$event.keyCode == 13 && searchKey && search(searchKey)"></input>
+    </label>
+    <!--<ion-nav-back-button class="no-text">
+    </ion-nav-back-button>-->
+    <button class="button button-clear button-positive" ng-click="searchInDoaaBook(searchKey)" ng-disabled="!searchKey">
+        بحث
+    </button>
+</div>
+
+<ion-content class="has-subheader">
+    <div class="info-bar" ng-show="searchResult.length">نتائج البحث: <strong>{{searchResult.length}}</strong></div>
+
+    <ion-list class="list-primary list-search">
+        <ion-item class="item" ng-if="isSearching">
+            <div class="">
+                <p class="aya-search">جاري البحث <ion-spinner name="bubbles"></ion-spinner></p>
+            </div>
+        </ion-item>
+        <ion-item class="item" ng-if="searchResult.length==0 && !isSearching">
+            <div class="">
+                <p class="aya-search">عذرا! لاتوجد نتائج مطابقة للبحث.</p>
+            </div>
+        </ion-item>
+       
+            <ion-item class="item" ng-repeat="res in searchResult">
+                <a ui-sref={{res.refLink}}>
+                    <!--<h3>{{res.Name}}</h3>-->
+                    <!--<p class="aya" compile="res.type =='doaa' ? res.DoaaContent : res.type =='names' ? res.NameOfAllahMeaning : res.ArticleContent"></p>-->
+                    <p class="aya" compile="res.displayText"></p>
+
+                </a>
+                <small class="badge badge-stable" >
+                    {{res.typeStr}} -
+                     {{res.Name}}
+                    <!--<img src="img/icon3.png" /> صفحة {{getArabicNumber(result.PageNum)}}-->
+                </small>
+            </ion-item>   
+   
+            <!--<ion-item class="item" ng-repeat="doaa in searchResult.doaas">
+                <a ng-click="goToDoaa(doaa.ID)">
+                    <p class="aya" compile="article.DoaaContent"></p>
+                </a>
+            </ion-item>--> 
+       
+        <ion-infinite-scroll on-infinite="loadMoreData()" ng-if="moreDataCanBeLoaded()"></ion-infinite-scroll>
+    </ion-list>
+</ion-content>
+

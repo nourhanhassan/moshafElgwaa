@@ -1,0 +1,39 @@
+﻿<ion-modal-view id="alarm-list">
+
+
+
+    <div class="popup-head">
+        <h3 class="popup-title">أيام التكرار</h3><h5 class="popup-sub-title"> حدد أيام تكرار التنبيه</h5>
+    </div>
+    <!--<div class="padding-horizontal padding-top dir-rtl">
+        <ion-list>
+            <ion-checkbox class="checkAll" ng-model="allDaysChecked" ng-click="toggleAllDaysCheck()"> اختر الكل</ion-checkbox>
+        </ion-list>
+    </div>-->
+    <ion-content class="padding-horizontal has-footer has-expanded-header">
+
+        <!--<ion-scroll>-->
+        <ion-list>
+
+
+            <ion-checkbox ng-repeat="day in weekDays"
+                          ng-model="day.value"
+                          ng-change="checkDay()" ><p class="aya">{{day.name}}</p></ion-checkbox>
+
+
+
+        </ion-list>
+        <!--</ion-scroll>-->
+
+    </ion-content>
+    <div class="bar bar-footer dir-rtl padding-horizontal">
+        <a class="button-bar">
+            <button class="button button-positive" ng-click="saveDaysChecklist()">حفظ</button>
+            <button class="button button-positive button-outline" ng-click="closeDaysChecklist()">إلغاء</button>
+        </a>
+    </div>
+
+
+
+
+</ion-modal-view>

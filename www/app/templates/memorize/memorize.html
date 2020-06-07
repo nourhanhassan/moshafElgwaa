@@ -1,0 +1,71 @@
+﻿<ion-view view-title="ورد الحفظ" class="main-bg"  ng-controller="memorizeController">
+    <ion-content ng-init="init()" >
+        <div class="card">
+            <h3 class="main-title">ورد الحفظ</h3>
+
+            <div class="padding">
+                <div class="list list-inset list-custom">
+                    <label class="item item-input"> <span class="input-label">الهدف </span> <strong>{{target.name}}</strong> </label>
+                    <label class="item item-input"> <span class="input-label">دورية الحفظ </span> <strong>{{target.periodTypeName}}</strong> </label>
+
+                    <label class="item item-input"> <span class="input-label">عدد الآيات</span> <strong>{{target.totalAyatCount}}</strong> </label>
+
+                    <label class="item item-input"> <span class="input-label">الورد المقرر</span> <strong>حفظ {{target.ayatCount}} آيات</strong> </label>
+                </div>
+                <div class="list list-custom list-ayat">
+                    <!--<div id="temp" style=" z-index: -50; position: absolute;"></div>-->
+                    <div id="{{aya.id}}" ng-repeat="aya in ayatTask ">
+                        <!--collection-item-width="getItemWidth()"-->
+                        <!--collection-item-height="getItemHeight(aya,$index).height"-->
+
+                        <div class="item item-divider surat-title" ng-show="$index==0 || aya.surahIndex==1 ">{{getSurah(aya.surahId).name}}</div>
+
+
+
+                        <div class="aya">
+                            <div>
+                                {{aya.verse}}<i ng-show="aya.isLate" class="icon ion-alert-circled"></i><i ng-show="aya.isWerd" class="icon ion-pin"></i><span class="badge badge-stable">{{aya.surahIndex}}</span>
+                                {{getItemHeight(aya,$index).ratio}}
+                            </div>
+                            <ion-checkbox ng-class="{'item-checked':aya.isChecked}" ng-disabled="($index!=0 && !canCheck(aya)) || aya.isChecked" ng-model="aya.isChecked" ng-change="addRemoveAya(aya.isChecked,aya,$last)" type="checkbox"> تم الحفظ</ion-checkbox>
+                        </div>
+
+                    </div>
+                    <!--<div class="aya">
+            <div> الحمد لله رب العالمين <span class="badge badge-stable">2</span></div> <ion-checkbox>تم الحفظ</ion-checkbox>
+
+        </div>
+
+
+        <div class="aya">
+            <div>  الرحمن الرحيم <span class="badge badge-stable">3</span></div> <ion-checkbox>تم الحفظ</ion-checkbox>
+
+        </div>-->
+
+
+                </div>
+
+
+            </div>
+
+            <div class="item item-divider">تم حفظ {{checkedCount()}} آيات من{{target.totalAyatCount}}</div>
+
+            <div class="padding text-right"> <a ng-click="goBack()" class="button icon-right button-stable ion-chevron-right">  رجوع </a> </div>
+        </div>
+        <!--<div class="card" style="background-color:transparent">
+        </div>-->
+
+        <!--<div id="{{aya.id}}" ng-repeat="aya in ayatTask track by $index">
+         
+            <div ng-show="$index==0 || aya.surahIndex==1 ">{{getSurah(aya.surahId).name}}</div>
+
+            <ion-checkbox ng-class="{active:aya.isWerd}" ng-disabled="$index!=0 && ayatTask[$index-1].isChecked != true" ng-model="aya.isChecked" ng-change="addRemoveAya(aya.isChecked,aya,$last)" type="checkbox">
+                <span style=" margin-right: 35px;">{{aya.verse}} <span>{{aya.surahIndex}}</span>
+                <span style="color:red" ng-show="aya.isLate" class="ion-alert"></span>
+                </span>
+
+            </ion-checkbox>-->
+
+
+    </ion-content>
+</ion-view>

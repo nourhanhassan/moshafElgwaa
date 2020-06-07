@@ -1,0 +1,10 @@
+﻿<ion-view view-title="الرئيسية" class="main-bg" hide-nav-bar="true" ng-controller="searchResultController">
+    <ion-content scroll="true">
+<div>
+    <text>نتائج البحث عن عبارة "{{searchKey}}" -{{number}} </text>
+</div>
+                <div class="quran" >
+                    <span ng-class=" {active: aya.id==currentAya.id}" ng-click="selectAya($event,aya)" class="quran" ng-repeat="aya in ayas">{{aya.surahName}}الآية {{aya.ayahNum}}<br />{{aya.verse}}<br /></span>
+                </div>
+    </ion-content>
+</ion-view>

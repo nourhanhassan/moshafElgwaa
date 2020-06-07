@@ -1,0 +1,40 @@
+﻿
+<ion-view view-title="مصحف الجواء  " ng-controller="notesController">
+
+    <ion-content>
+
+        <ion-list class="list-primary">
+
+            <ion-item class="item" ng-repeat="note in notesList | orderBy:'id'">
+                <a ng-click="goToPage(note.pageNumber,note.ayaId)">
+                    <p ng-bind-html="breakLines(note.text)"></p>
+
+
+
+                </a>
+                <small class="badge badge-stable"><img src="img/icon1.png" />سورة {{note.surahName}} <img src="img/icon2.png" /> آية {{getArabicNumber(note.ayaNumber)}}  <img src="img/icon3.png" /> صفحة {{getArabicNumber(note.pageNumber)}}</small>
+
+                <a ng-click="deleteNote(note)" class="icon ion-ios-close"></a>
+            </ion-item>
+
+
+            <ion-item class="item" ng-if="notesList.length==0">
+                <a href="#">
+                    <p>لا يوجد خواطر</p>
+                </a>
+
+            </ion-item>
+
+
+        </ion-list>
+
+
+    </ion-content>
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard"><i class="ion-home"></i></button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()"><i class="ion-arrow-left-c"></i></button>
+
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,88 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<ion-view hide-nav-bar="hideBar" view-title="القرآن الكريم" ng-class="{'first-page':curPage.pageNum==1 ||curPage.pageNum==2 }" ng-controller="testController">
+    <ion-nav-title ng-click="removePopovers()"> {{title}}</ion-nav-title>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-ios-search" ng-click="removePopovers();search();"></button>
+        <!--<button class="button button-icon button-clear ion-ios-gear-outline"
+                 ui-sref="app.settings"></button>
+         <button class="button button-icon button-clear ion-ios-bookmarks-outline"
+                 ui-sref="app.bookmarks"></button>
+         <button class="button button-icon button-clear ion-ios-list-outline" ng-click="showMemorizePageChecklist()"></button>
+
+        -->
+        <button class="button button-icon button-clear ion-android-more-vertical" ng-click="showPopOver()"></button>
+        <div class="bar-popover" ng-show="popoverShowen">
+            <div class="list">
+
+                <a ng-if="appMode != enums.appModes.review" class="item  item-icon-right" ng-click="showMemorizePageChecklist();clickOnPopOverItem()">
+                    <i class="icon ion-ios-list-outline"></i>
+                    حفظ الآيات
+                </a>
+                <a ng-if="appMode == enums.appModes.review" class="item  item-icon-right" ng-click="showReviewChecklist();clickOnPopOverItem()">
+                    <i class="icon ion-ios-list-outline"></i>
+                    مراجعة الآيات
+                </a>
+                <a class="item  item-icon-right" ng-click="switchNotesMode();clickOnPopOverItem()">
+                    <i class="icon" ng-class=" {'ion-ios-compose-outline':isNotesModeEnabled != true,'ion-ios-compose': isNotesModeEnabled == true}"></i>
+                    الخواطر
+                </a>
+                <a class="item  item-icon-right" ng-click="toggleTestMemorizeMode();clickOnPopOverItem()">
+                    <i class="icon" ng-class=" {'ion-ios-color-wand-outline':isTestMemorizeMode != true,'ion-ios-color-wand': isTestMemorizeMode == true} "></i>
+                    التسميع
+                </a>
+                <a class="item  item-icon-right" ui-sref="app.bookmarks">
+                    <i class="icon ion-ios-bookmarks-outline"></i>
+                    العلامات المرجعية
+                </a>
+                <a class="item  item-icon-right" ui-sref="app.settings">
+                    <i class="icon ion-ios-gear-outline"></i>
+                    الإعدادات
+                </a>
+
+            </div>
+        </div>
+        <button ng-if="isNotesModeEnabled == true" class="button button-icon button-clear " ng-class=" {'ion-ios-compose-outline':isNotesModeEnabled != true,'ion-ios-compose': isNotesModeEnabled == true} " ng-click="switchNotesMode()"></button>
+        <button ng-if="isTestMemorizeMode==true" class="button button-icon button-clear " ng-class=" {'ion-ios-color-wand-outline':isTestMemorizeMode != true,'ion-ios-color-wand': isTestMemorizeMode == true} " ng-click="toggleTestMemorizeMode()"></button>
+        <!--<button class="button button-icon button-clear" ng-click="removePopovers();markPage(curPage.pageNum,curPage.firstSurah)" ng-class=" {'ion-ios-bookmarks-outline':curPage.isMarked != true,'ion-ios-bookmarks': curPage.isMarked == true} "></button>-->
+    </ion-nav-buttons>
+    <div id="preloadfont"></div>
+    <!--<ion-spinner style="position :absolute;right: 46%;top: 45%"></ion-spinner>-->
+
+    <ion-content class="quran-page " ng-class="{'mushaf':!hideBar &&curPage.pageNum<3}" delegate-handle="mainScroll">
+
+        <img ng-src="img/quran/page001.png" class="full-image" id="page1" style="display:none;" />
+
+
+
+
+    </ion-content>
+    <!--<div ng-hide="hideBar || inAudioMode" ng-class="" class="tabs tabs-energized tabs-icon-top footer-tabs ">
+
+        <a class="tab-item" ng-click="showMemorizePageChecklist()">
+            <i class="icon ion-ios-list-outline"></i>
+            قائمة الحفظ
+        </a>
+        <a class="tab-item" ng-click="switchNotesMode()" ng-class="{'active':isNotesModeEnabled}">
+            <i class="icon ion-ios-compose-outline"></i>
+            الخواطر
+        </a>
+    </div>-->
+    <!--<div id="canvasBody" >
+        <!--<canvas id="myCanvas" width="578" height="200"></canvas>-->
+    <!--<canvas id="canvas" style="padding-left: 10px; padding-right: 0; margin-left: auto; margin-right: auto; width: 100%; height :100%;"></canvas>
+    </div>-->
+    <div id="framework">
+        <canvas id="canvas" style="border:2px solid;"></canvas>
+    </div>
+    <div ng-hide="hideBar" class="bar bar-footer bar-positive">
+        <small class="badge badge-stable"> سورة {{curPage.surah}}</small>
+        <small class="badge badge-stable">  {{getArabicNumber(curPage.pageNum )}}  </small>
+        <small class="badge badge-stable">  {{curPage.juz}}</small>
+
+    </div>
+
+
+</ion-view>
+
+
+

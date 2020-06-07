@@ -1,0 +1,35 @@
+﻿<ion-view view-title=" الأدعية " ng-controller="doaaListController" class="doaa-indexing doaa-indexing2">
+    <ion-content class="dark-bg">
+
+
+        <div>
+
+            <div class="title-index-wrapper">
+                <div id="cover-logo-box-3" class="cover-logo-boxes title-index">
+                    <div><span><h3>الدعاء</h3></span></div>
+                </div>
+            </div>
+
+            <ul class="list-index list-index2">
+                <!--<li ng-repeat="mainCateg in doaas track by $index"><a ui-sref="doaa({id:$index})" ng-click="$event.stopPropagation();">{{doaa.Name}}</a></li>-->
+
+
+                <li ng-repeat="mainCateg in doaas track by $index" ng-click=" mainCateg.length == 1 ? openDoaa(mainCateg[0].ID) : setMaster(mainCateg) ;$event.stopPropagation();" ng-class="{'sub-menu' : isSelected(mainCateg), 'has-submenu':mainCateg.length!='1'}">
+                    <a>{{mainCateg[0].DoaaMainCategoryName}} </a>
+                    <ul>
+                        <li ng-repeat="doaa in mainCateg track by $index"><a ui-sref="doaa({id:doaa.ID})">{{doaa.Name}}</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+
+
+    </ion-content>
+    <button class="button icon-right" ui-sref="index"><i class="ion-arrow-right-c"></i></button>
+
+</ion-view>

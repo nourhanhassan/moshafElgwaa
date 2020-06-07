@@ -1,0 +1,26 @@
+﻿<ion-view view-title="المجموعات" class="main-bg" ng-controller="GroupManageController">
+  <ion-content>
+   <div class="main-logo">
+        <img src="img/logo.png"/> </div>
+        
+    <div class="main-btns">
+    <a class="button button-block button-positive" ui-sref="group">  مجموعاتي <i class="icon ion-flag"></i></a>
+    <a class="button button-block button-positive" ng-click="addNewGroup()"> مجموعة جديدة <i class="icon ion-plus"></i></a>
+    
+    
+    
+    </div>
+  </ion-content>
+    <!--<a ng-click="share()" class="button button-light button-small">مشاركة التطبيق <i class="icon ion-share"></i></a>-->
+    <ion-footer-bar>
+
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+
+    </ion-footer-bar>
+</ion-view>

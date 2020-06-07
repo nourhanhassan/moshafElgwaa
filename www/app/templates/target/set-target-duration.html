@@ -1,0 +1,131 @@
+﻿<ion-view view-title="{{targetData.name}}" class="main-bg" ng-controller="setTargetDurationController">
+  
+      <div class="advanced-panel subheader bar bar-royal">
+          <span ng-show="targetData.targetType==enums.targetType.sura || targetData.targetType==enums.targetType.aya">
+              عدد الآيات المتبقية
+              <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfAyah - targetData.noOfMemorizedAyat)}}</strong>
+              <strong ng-show="!targetData.ayatCount">-----</strong>
+              يتحقق تقريبا خلال <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfDays)}}</strong><strong ng-show="!targetData.ayatCount">-----</strong> يوم
+          </span>
+          <span ng-hide="targetData.targetType==enums.targetType.sura|| targetData.targetType==enums.targetType.aya">
+              عدد الصفحات المتبقية
+              <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfPage - targetData.noOfMemorizedPages)}}</strong>
+              <strong ng-show="!targetData.ayatCount">-----</strong>
+              يتحقق تقريبا خلال <strong ng-show="targetData.ayatCount">{{getArabicNumber(targetData.noOfDays)}}</strong><strong ng-show="!targetData.ayatCount">-----</strong> يوم
+          </span>
+    </div>
+
+    <ion-content class="has-subheader memorize-form has-progress">
+        <div class="card">
+            <form name="targetForm">
+
+                <div class="row">
+                    <div class="col">
+                        <ion-list class="list list-default animated slideInUp" ng-show="targetData.targetType==enums.targetType.sura || targetData.targetType==enums.targetType.aya">
+                            <ion-item class="item">
+                                <a>
+                                    <span class="list-number-name"> عدد الايات</span>
+                                    <span style="color:red" ng-show="(targetForm.ayatCount.$error.required)">
+                                        <span ng-show="targetForm.ayatCount.$error.required">  * </span>
+                                    </span>
+                                    <div class="memo-options">
+                                        <div class="number-input">
+                                            <button ng-click="decreaseAyatCount()"></button>
+                                            <input class="quantity" type="number" name="ayatCount" ng-change="vaildateAyatCount()" ng-model="targetData.ayatCount" oninput="validity.valid||(value='');" min="1" max="targetData.noOfAyah" required placeholder="عدد الآيات">
+                                            <button ng-click="increaseAyatCount()" class="plus"></button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </ion-item>
+                            <ion-item class="item"> <a class=""><span class="list-number-name">  عدد الآيات المحفوظة</span> <small class="badge badge-stable">{{getArabicNumber(targetData.noOfMemorizedAyat)}} من {{getArabicNumber(targetData.noOfAyah)}}</small></a> </ion-item>
+                            <ion-item class="item"> <a><span class="list-number-name">الورد المقرر</span> <small class="badge badge-stable">حفظ {{getArabicNumber(targetData.ayatCount)}} آيات</small></a> </ion-item>
+                        </ion-list>
+
+                        <ion-list class="list list-default animated slideInUp" ng-hide="targetData.targetType ==enums.targetType.sura || targetData.targetType ==enums.targetType.aya">
+                            <ion-item class="item">
+                                <a>
+                                    <span class="list-number-name"> عدد الصفحات</span>
+                                    <span style="color:red" ng-show="(targetForm.PagesCount.$error.required)">
+                                        <span ng-show="targetForm.PagesCount.$error.required">  * </span>
+                                    </span>
+                                    <div class="memo-options">
+                                        <div class="number-input">
+                                            <button ng-click="decreasePagesCount()"></button>
+                                            <input class="quantity" type="number" name="PagesCount" ng-change="vaildatePagesCount()" ng-model="targetData.PagesCount" oninput="validity.valid||(value='');" min="1" max="targetData.noOfPage" required placeholder="عدد الصفحات" />
+                                            <button ng-click="increasePagesCount()" class="plus"></button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </ion-item>
+                            <ion-item class="item"> <a class=""><span class="list-number-name">  عدد الصفحات المحفوظة</span> <small class="badge badge-stable">{{getArabicNumber(targetData.noOfMemorizedPages)}} من {{getArabicNumber(targetData.noOfPage)}}</small></a> </ion-item>
+                            <ion-item class="item"> <a><span class="list-number-name">الورد المقرر</span> <small class="badge badge-stable">حفظ {{getArabicNumber(targetData.PagesCount)}} صفحة</small></a> </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <ion-list class="radio-buttons">
+                            <ion-radio name="periodtype" value="{{enums.periodType.daily}}" ng-model="targetData.periodType" ng-change="setTargetNotificationTime()">
+                                يومي
+
+                            </ion-radio>
+                            <ion-radio name="periodtype" value="{{enums.periodType.weekly}}" ng-model="targetData.periodType" ng-change="setTargetNotificationTime()">
+                                أسبوعي
+
+                            </ion-radio>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="row" ng-if="targetData.periodType==enums.periodType.weekly">
+                    <div class="col">
+                        <div class="list">
+                            <div class="item item-input item-select">
+                                <div class="input-label">
+                                    اختر اليوم
+                                </div>
+                                <select ng-model="notificationTime.dayofWeek" ng-options="day.index as day.name for day in enums.weekDays" ng-change="setTargetNotificationTime()"></select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <ion-list>
+                            <ion-item class="item item-toggle">
+                                التنبيه
+                                <label class="toggle toggle-positive">
+                                    <input type="checkbox" ng-model="targetData.notificationModeSelection" ng-change="toggleNotification()">
+                                    <div class="track">
+                                        <div class="handle"></div>
+                                    </div>
+                                </label>
+                            </ion-item>
+                            <div ng-if="targetData.notificationMode == enums.notificationMode.on">
+                                <label class="item item-input">
+                                    <span class="input-label" aria-label="وقت التنبيه " id="Span1">وقت التنبيه </span>
+                                    <strong class="ng-binding" style="width:100px;">{{getHour()}}:{{notificationTime.minute}} {{getAmPm()}}</strong>
+                                </label>
+
+
+                                <div class="text-center"> <a ng-click="setTime()" class="button  button-positive icon ion-android-alarm-clock icon-right button-block">ضبط التنبيه</a></div>
+                            </div>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="padding text-left"> <a ng-click="saveTarget()" class="button button-positive" ng-disabled="targetForm.$invalid"> حفظ </a></div>
+            </form>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar>
+        <button class="button icon-right main-tab home-tab animated slideInRight" ui-sref="dashboard">
+            <i class="ion-home"></i>
+        </button>
+        <button class="button icon-right main-tab settings-tab animated slideInLeft" ng-click="mgoBack()">
+            <i class="ion-arrow-left-c"></i>
+        </button>
+    </ion-footer-bar>
+
+</ion-view>

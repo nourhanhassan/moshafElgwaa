@@ -1,0 +1,35 @@
+﻿<ion-modal-view id="add-bookmark">
+
+
+                <ion-content class="padding">
+
+                  <ion-list>
+
+
+                      <ion-checkbox ng-if="!isEditingBookmarks" class=" color-text-{{bookmark.color}}" ng-repeat="bookmark in bookMarkTypes track by bookmark.title" ng-change="bookmarkAya(curAya,bookmark.id,bookmark.checked,bookmark.markId,bookmark)" ng-model="bookmark.checked"
+                                    ng-checked="bookmark.checked">
+                          {{bookmark.title}}
+                      </ion-checkbox>
+
+
+                      <ion-checkbox ng-if="isEditingBookmarks" class=" editable color-text-{{bookmark.color}}" ng-repeat="bookmark in bookMarkTypes track by bookmark.title"  ng-model="bookmark.isDeleted"
+                                    ng-checked="bookmark.isDeleted">
+                          {{bookmark.title}}
+                      </ion-checkbox>
+        
+
+
+
+</ion-list>
+
+                </ion-content>
+                <a class="button-bar">
+                  
+                    <button class="button button-positive button-clear button-block icon-right icon ion-edit" ng-click="editBookMarkTypes()">
+                        <span ng-if="isEditingBookmarks"> حفظ</span>
+                        <span ng-if="!isEditingBookmarks"> حذف</span>
+                    </button>
+                    <button class="button button-positive button-clear button-block icon-right icon ion-plus" ng-click="showAddBookMarkTypeModal()"> إضافة علامة مرجعية جديدة</button>
+
+                    </a>
+            </ion-modal-view>

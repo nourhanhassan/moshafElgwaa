@@ -136,7 +136,7 @@
             //$state.go("alarm-list")
         },
 
-        addTarget: function (alarm) {
+        addTarget2: function (alarm) {
             alarm.id = guid.generate(); //generate a unique id for the target          
             if (this.data.notificationMode == enums.notificationMode.on) {
                 this.saveTargetNotification(alarm);
@@ -147,7 +147,16 @@
             //localStorage.append(key, alarm);
         },
 
-        updateTarget: function (alarm) {
+  addTarget: function (alarm) {
+            alarm.id = guid.generate(); //generate a unique id for the target          
+            if (this.data.notificationMode == enums.notificationMode.on) {
+                this.saveTargetNotification(alarm);
+            }
+           
+            //var key =  storageKey;
+            
+            //localStorage.append(key, alarm);
+        },      updateTarget: function (alarm) {
             if (alarm.notificationMode == enums.notificationMode.on) {
                 this.cancelNotification(alarm);
                 this.saveTargetNotification(alarm);
